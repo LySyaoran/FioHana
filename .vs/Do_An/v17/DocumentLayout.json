@@ -1,0 +1,265 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\views\\_shared\\_layoutpage1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\_shared\\_layoutpage1.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|c:\\users\\admin\\downloads\\hk1 n\u0103m 3\\lt web\\do_an\\do_an\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|c:\\users\\admin\\downloads\\hk1 n\u0103m 3\\lt web\\do_an\\do_an\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|c:\\users\\admin\\downloads\\hk1 n\u0103m 3\\lt web\\do_an\\do_an\\views\\about\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\about\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\views\\about\\promotion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\about\\promotion.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:controllers\\aboutcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\views\\contact\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\contact\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\views\\shop\\shopsingle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\shop\\shopsingle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\views\\shop\\shop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\shop\\shop.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\assets\\css\\custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:assets\\css\\custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:app_start\\routeconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\views\\home\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:views\\home\\home.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{320F3C86-B497-4D97-B365-495EAB43712A}|Do_An.csproj|solutionrelative:controllers\\contactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Login\\Login.cshtml",
+              "RelativeDocumentMoniker": "Views\\Login\\Login.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Login\\Login.cshtml",
+              "RelativeToolTip": "Views\\Login\\Login.cshtml",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAqwDIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-26T03:24:15.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "Controllers\\LoginController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-26T03:23:55.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Promotion.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\About\\Promotion.cshtml",
+              "RelativeDocumentMoniker": "Views\\About\\Promotion.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\About\\Promotion.cshtml",
+              "RelativeToolTip": "Views\\About\\Promotion.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-26T02:22:48.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_LayoutPage1.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\_shared\\_LayoutPage1.cshtml",
+              "RelativeDocumentMoniker": "Views\\_shared\\_LayoutPage1.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\_shared\\_LayoutPage1.cshtml",
+              "RelativeToolTip": "Views\\_shared\\_LayoutPage1.cshtml",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAAFMAAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-25T14:16:30.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\About\\About.cshtml",
+              "RelativeDocumentMoniker": "Views\\About\\About.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\About\\About.cshtml",
+              "RelativeToolTip": "Views\\About\\About.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-25T15:03:15.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T14:17:04.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ShopSingle.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Shop\\ShopSingle.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shop\\ShopSingle.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Shop\\ShopSingle.cshtml",
+              "RelativeToolTip": "Views\\Shop\\ShopSingle.cshtml",
+              "ViewState": "AQIAAKoCAAAAAAAAAAAAADYAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-25T15:08:49.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Contact\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contact\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Contact\\Contact.cshtml",
+              "RelativeToolTip": "Views\\Contact\\Contact.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAqwDkAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-25T15:03:29.746Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AboutController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\AboutController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AboutController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\AboutController.cs",
+              "RelativeToolTip": "Controllers\\AboutController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T15:01:42.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Shop.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Shop\\Shop.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shop\\Shop.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Shop\\Shop.cshtml",
+              "RelativeToolTip": "Views\\Shop\\Shop.cshtml",
+              "ViewState": "AQIAAHwBAAAAAAAAAAAqwJABAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-25T15:03:58.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "custom.css",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Assets\\css\\custom.css",
+              "RelativeDocumentMoniker": "Assets\\css\\custom.css",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Assets\\css\\custom.css",
+              "RelativeToolTip": "Assets\\css\\custom.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-25T15:33:01.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RouteConfig.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\App_Start\\RouteConfig.cs",
+              "RelativeDocumentMoniker": "App_Start\\RouteConfig.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\App_Start\\RouteConfig.cs",
+              "RelativeToolTip": "App_Start\\RouteConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T15:20:51.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Home.cshtml",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Home\\Home.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Home.cshtml",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Views\\Home\\Home.cshtml",
+              "RelativeToolTip": "Views\\Home\\Home.cshtml",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAEsAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-25T14:53:35.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ShopController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\ShopController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ShopController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\ShopController.cs",
+              "RelativeToolTip": "Controllers\\ShopController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T15:01:57.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ContactController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\ContactController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContactController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Downloads\\HK1 N\u0103m 3\\LT Web\\Do_An\\Do_An\\Controllers\\ContactController.cs",
+              "RelativeToolTip": "Controllers\\ContactController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-25T15:02:20.332Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
