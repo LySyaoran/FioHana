@@ -11,6 +11,12 @@ namespace Do_An.Controllers
         // GET: Home
         public ActionResult Home()
         {
+            ViewBag.Tittle = "FioHana Shop";
+            return View();
+        }
+        public ActionResult Report()
+        {
+            ViewBag.Tittle = "Report";
             return View();
         }
     }

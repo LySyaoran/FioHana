@@ -11,10 +11,12 @@ namespace Do_An.Controllers
         // GET: About
         public ActionResult About()
         {
+            ViewBag.Tittle = "About";
             return View();
         }
         public ActionResult Promotion()
         {
+            ViewBag.Tittle = "Promotion";
             return View();
         }
     }

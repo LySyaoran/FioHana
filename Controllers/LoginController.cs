@@ -11,6 +11,7 @@ namespace Do_An.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            ViewBag.Tittle = "Login";
             return View();
         }
     }

@@ -11,6 +11,7 @@ namespace Do_An.Controllers
         // GET: Contact
         public ActionResult Contact()
         {
+            ViewBag.Tittle = "Contact";
             return View();
         }
     }
