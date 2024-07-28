@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8777d391938943628b4855a7a932c41b" Name="Diagram1">
+        <EntityTypeShape EntityType="nhom1ltwebModel.flower_types" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.occasion" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.order_details" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.order" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.promotion" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.user" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__products__loai_h__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__products__dip_ph__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__order_det__don_h__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__order_det__san_p__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__orders__khach_ha__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__orders__promotio__6754599E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
