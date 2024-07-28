@@ -127,8 +127,11 @@
     <Content Include="Assets\img\HoaHong\hoa-vang-hoa-nen.png" />
     <Content Include="Assets\img\HoaHong\HoaHuongDuong.png" />
     <Content Include="Assets\img\HoaHong\HoaLy.png" />
+    <Content Include="Assets\img\HoaHong\HongTuaDoiMoi.jpg" />
     <Content Include="Assets\img\HoaHong\Logo.ico" />
     <Content Include="Assets\img\HoaHong\Logo.png" />
+    <Content Include="Assets\img\HoaHong\MotNuCuoiKhe.jpg" />
+    <Content Include="Assets\img\HoaHong\TuoiMoiVuiVe.jpg" />
     <Content Include="Assets\img\product_single_01.jpg" />
     <Content Include="Assets\img\product_single_02.jpg" />
     <Content Include="Assets\img\product_single_03.jpg" />
