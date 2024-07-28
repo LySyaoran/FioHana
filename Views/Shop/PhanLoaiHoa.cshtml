@@ -83,17 +83,12 @@
                 </div>
                 <div class="col-md-6 pb-4">
                     <div class="d-flex">
-                        <form id="sortForm" method="get" action="@Url.Action("Shop", "Shop")">
-                            <select class="form-control" name="sortOrder" onchange="document.getElementById('sortForm').submit();">
-                                <option value="default" @(Request.QueryString["sortOrder"] == "default" ? "selected" : "")>Tiêu biểu</option>
-                                <option value="desc" @(Request.QueryString["sortOrder"] == "desc" ? "selected" : "")>Mắc tới rẻ</option>
-                                <option value="asc" @(Request.QueryString["sortOrder"] == "asc" ? "selected" : "")>Rẻ tới mắc</option>
-                            </select>
-                        </form>
+                        <select class="form-control">
+                            <option>Tiêu biểu</option>
+                            <option>A tới Z</option>
+                        </select>
                     </div>
                 </div>
-
-
             </div>
             <div class="row">
                 @foreach (var product in Model)
@@ -104,14 +99,14 @@
                                 <img class="card-img rounded-0 img-fluid" src="@Url.Content("~/Assets/img/" + product.hinh_anh)" alt="@product.ten">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
+                                        <li><a class="btn btn-success text-white" href="~/Shop/ShopSingle/@product.id"><i class="far fa-heart"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="~/Shop/ShopSingle/@product.id"><i class="far fa-eye"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="~/Shop/ShopSingle/@product.id"><i class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="#" class="h3 text-decoration-none">@product.ten</a>
+                                <a href="~/Shop/ShopSingle/@product.id" class="h3 text-decoration-none">@product.ten</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>@product.kich_thuoc</li>
                                     <li class="pt-2">
@@ -154,4 +149,3 @@
     </div>
 </div>
 <!-- End Content -->
-

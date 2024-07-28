@@ -118,6 +118,7 @@
     <Content Include="Assets\img\category_img_01.jpg" />
     <Content Include="Assets\img\category_img_02.jpg" />
     <Content Include="Assets\img\category_img_03.jpg" />
+    <Content Include="Assets\img\Index\DamBaoChatLuong.png" />
     <Content Include="Assets\img\favicon.ico" />
     <Content Include="Assets\img\feature_prod_01.jpg" />
     <Content Include="Assets\img\feature_prod_02.jpg" />
@@ -127,8 +128,12 @@
     <Content Include="Assets\img\HoaHong\hoa-vang-hoa-nen.png" />
     <Content Include="Assets\img\HoaHong\HoaHuongDuong.png" />
     <Content Include="Assets\img\HoaHong\HoaLy.png" />
+    <Content Include="Assets\img\HoaHong\HongTuaDoiMoi.jpg" />
     <Content Include="Assets\img\HoaHong\Logo.ico" />
     <Content Include="Assets\img\HoaHong\Logo.png" />
+    <Content Include="Assets\img\HoaHong\MotNuCuoiKhe.jpg" />
+    <Content Include="Assets\img\HoaHong\TuoiMoiVuiVe.jpg" />
+    <Content Include="Assets\img\Index\HoaTuongTrung.png" />
     <Content Include="Assets\img\product_single_01.jpg" />
     <Content Include="Assets\img\product_single_02.jpg" />
     <Content Include="Assets\img\product_single_03.jpg" />
@@ -139,6 +144,7 @@
     <Content Include="Assets\img\product_single_08.jpg" />
     <Content Include="Assets\img\product_single_09.jpg" />
     <Content Include="Assets\img\product_single_10.jpg" />
+    <Content Include="Assets\img\Index\shipper.png" />
     <Content Include="Assets\img\shop_01.jpg" />
     <Content Include="Assets\img\shop_02.jpg" />
     <Content Include="Assets\img\shop_03.jpg" />
@@ -283,6 +289,7 @@
     <Content Include="Views\About\Promotion.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Home\Report.cshtml" />
+    <Content Include="Views\Shop\PhanLoaiHoa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
