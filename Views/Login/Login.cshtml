@@ -1,60 +1,161 @@
-﻿
+﻿@model Do_An.Models.user
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/_shared/_LayoutPage1.cshtml";
 }
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>@ViewBag.Tittle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
     <style>
+        table {
+            border: 1px solid white;
+            border-collapse: collapse;
+            color: white;
+            background-color: #59ab6e;
+            border-radius: 50px;
+        }
+
+        .lable_item {
+            padding: 2vw;
+        }
+
+        .input_item {
+            margin-right: 2vw;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
-    <section class="vh-100" style="background-color: #508bfc;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                        <div class="card-body p-5 text-center">
+    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { onsubmit = "return handleRememberMe();" }))
+    {
+        Html.AntiForgeryToken();
+        <table style="margin: 5vw auto; width: 40vw">
+            <tr>
+                <th style="padding: 1vw 0; font-size: 2vw; text-align: center; font-size: 50px">Log In</th>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">Email:</p>
+                    @Html.TextBoxFor(m => m.email, new { id = "email", style = "width: 100%", placeholder = "Hãy nhập Email", @class = "input-field" })
+                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.email)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">PassWord:</p>
+                    @Html.PasswordFor(m => m.password, new { id = "password", style = "width: 100%", placeholder = "Hãy nhập Pass Word", @class = "input-field" })
+                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.password)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item" style="text-align: center;">
+                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Hiện mật khẩu
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input type="checkbox" id="rememberMe" name="remember" />
+                    <label style="margin-left: 3px">Lưu đăng nhập?</label>
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <label style="margin: 2vw 2vw 1vw 2vw; display: block">Nếu bạn chưa có tài khoản? Hãy nhấn vào <a href="~/Login/Signup" style="color: black">Sign Up</a></label>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding: 1vw 0; font-size: 2vw">
+                    <button type="submit" class="btn_buy" style="float: none; background-color: white; color: #59ab6e">Submit</button>
+                </td>
+            </tr>
+        </table>
+    }
 
-                            <h3 class="mb-5">Sign in</h3>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var inputFields = document.querySelectorAll('.input-field');
+            inputFields.forEach(function (input) {
+                input.addEventListener('input', function () {
+                    var validationMessage = input.parentElement.querySelector('.validation-message');
+                    if (validationMessage) {
+                        validationMessage.textContent = '';
+                    }
+                });
+            });
 
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typeEmailX-2">Email</label>
-                            </div>
+            // Tự động điền thông tin đăng nhập từ cookie nếu có
+            var email = getCookie('email');
+            var password = getCookie('password');
+            if (email && password) {
+                document.getElementById('email').value = email;
+                document.getElementById('password').value = password;
+                document.getElementById('rememberMe').checked = true;
+            }
+        });
 
-                            <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg" />
-                                <label class="form-label" for="typePasswordX-2">Password</label>
-                            </div>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('password');
+            var showPasswordCheckbox = document.getElementById('showPassword');
 
-                            <!-- Checkbox -->
-                            <div class="form-check d-flex justify-content-start mb-4">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                                <label class="form-check-label" for="form1Example3"> Remember password </label>
-                            </div>
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+            }
+        }
 
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+        function handleRememberMe() {
+            var rememberMe = document.getElementById('rememberMe').checked;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
 
-                            <hr class="my-4">
+            if (rememberMe) {
+                setCookie('email', email, 7); // Lưu email trong 7 ngày
+                setCookie('password', password, 7); // Lưu password trong 7 ngày
+            } else {
+                deleteCookie('email');
+                deleteCookie('password');
+            }
 
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block btn-primary" style="background-color: #dd4b39;"
-                                    type="submit">
-                                <i class="fab fa-google me-2"></i> Sign in with google
-                            </button>
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-                                    type="submit">
-                                <i class="fab fa-facebook-f me-2"></i>Sign in with facebook
-                            </button>
+            return true; // Cho phép gửi form
+        }
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function deleteCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
+        }
+    </script>
 </body>
 </html>
-

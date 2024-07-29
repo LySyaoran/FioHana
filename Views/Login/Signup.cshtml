@@ -1,0 +1,137 @@
+﻿@model Do_An.Models.user
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        table {
+            border: 1px solid white;
+            border-collapse: collapse;
+            color: white;
+            background-color: #59ab6e;
+            border-radius: 50px;
+        }
+
+        .lable_item {
+            padding: 2vw;
+        }
+
+        .input_item {
+            margin-right: 2vw;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Signup", "Login", FormMethod.Post, new { onsubmit = "return validatePassword();" }))
+    {
+        Html.AntiForgeryToken();
+        <table style="margin: 5vw auto; width: 40vw">
+            <tr>
+                <th style="padding: 1vw 0; font-size: 2vw; text-align: center; font-size: 50px">Sign Up</th>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">Tên đăng nhập:</p>
+                    @Html.TextBoxFor(m => m.ten, new { style = "width: 100%", placeholder = "Hãy nhập tên đăng nhập", @class = "input-field" })
+                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.ten)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">Email:</p>
+                    @Html.TextBoxFor(m => m.email, new { style = "width: 100%", placeholder = "Hãy nhập Email", @class = "input-field" })
+                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.email)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">Số điện thoại:</p>
+                    @Html.TextBoxFor(m => m.so_dien_thoai, new { style = "width: 100%", placeholder = "Hãy nhập số điện thoại", @class = "input-field" })
+                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.so_dien_thoai)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">PassWord:</p>
+                    @Html.PasswordFor(m => m.password, new { id = "password", style = "width: 100%", placeholder = "Hãy nhập Pass Word", @class = "input-field" })
+                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.password)</p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item">
+                    <p style="text-align: center">RepassWord:</p>
+                    <input id="repassword" type="password" style="width: 100%" placeholder="Xác nhận lại Pass Word" />
+                    <p style="color: white" class="error_text"></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="lable_item" style="text-align: center;">
+                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Hiện mật khẩu
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="padding: 1vw 0; font-size: 2vw">
+                    <button type="submit" class="btn_buy" style="float: none; background-color: white; color: #59ab6e">Submit</button>
+                </td>
+            </tr>
+        </table>
+    }
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var inputFields = document.querySelectorAll('.input-field');
+            inputFields.forEach(function (input) {
+                input.addEventListener('input', function () {
+                    var validationMessage = input.parentElement.querySelector('.validation-message');
+                    if (validationMessage) {
+                        validationMessage.textContent = '';
+                    }
+                });
+            });
+        });
+
+        function validatePassword() {
+            var password = document.getElementById('password').value;
+            var repassword = document.getElementById('repassword').value;
+            var error_text = document.querySelector('.error_text');
+
+            if (password !== repassword) {
+                error_text.innerHTML = 'Mật khẩu không khớp';
+                return false;
+            }
+
+            return true;
+        }
+
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('password');
+            var repasswordField = document.getElementById('repassword');
+            var showPasswordCheckbox = document.getElementById('showPassword');
+
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = 'text';
+                repasswordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+                repasswordField.type = 'password';
+            }
+        }
+    </script>
+</body>
+</html>

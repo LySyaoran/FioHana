@@ -283,6 +283,9 @@
     <Content Include="Views\About\Promotion.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Home\Report.cshtml" />
+    <Content Include="Views\Login\Success.cshtml" />
+    <Content Include="Views\Login\Signup.cshtml" />
+    <Content Include="Views\_shared\_LayoutPage2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

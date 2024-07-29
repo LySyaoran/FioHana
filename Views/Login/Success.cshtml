@@ -1,0 +1,145 @@
+﻿@model Do_An.Models.user
+@{
+    ViewBag.Title = "Manage Account";
+    Layout = "~/Views/_shared/_LayoutPage2.cshtml";
+}
+
+<style>
+    table {
+        border: 1px solid white;
+        border-collapse: collapse;
+        color: white;
+        background-color: #59ab6e;
+        border-collapse: collapse;
+        border-radius: 50px;
+    }
+</style>
+
+<div style="padding: 10vh 0">
+    <table style="margin: auto; width: 50vw">
+        <tr>
+            <th colspan="3" style="text-align: center; padding: 4vh 0; border: none">Thông tin tài khoản</th>
+        </tr>
+        <tr>
+            <td colspan="3" align="center" style="padding: 3vh 0; border: none">
+                <div style="height: 150px; width: 150px; border: 1px solid white; margin: 0vh auto; border-radius: 50%">
+                    <input type="file" id="uploadImage" style="display: none" onchange="uploadImage(event)">
+                    <label for="uploadImage" style="cursor: pointer">
+                        <img id="previewImage" src="#" alt="Preview" style="height: 100%; width: 100%; object-fit: cover; border-radius: 50%">
+                    </label>
+                </div>
+                <button style="margin-top: 10px" onclick="chooseImage()">Upload ảnh</button>
+            </td>
+        </tr>
+        <tr>
+            <td style=" border: none; text-align: center">Tên:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                    <td style="border: none">@Model.ten</td>
+                }
+            </td>
+            <td style=" border: none" align="center">
+                 <button type="button">Thay đổi</button>
+            </td>
+        </tr>
+        <tr>
+            <td style=" border: none; text-align: center ">Địa chỉ:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.dia_chi</td>
+            }
+                </td>
+                <td style=" border: none" align="center">
+                    <button type="button">Thay đổi</button>
+                </td>
+            </tr>
+        <tr>
+            <td style=" border: none; text-align: center">Số điện thoại:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.so_dien_thoai</td>
+            }
+                </td>
+                <td style=" border: none" align="center">
+                    <button type="button">Thay đổi</button>
+                </td>
+            </tr>
+        <tr>
+            <td style=" border: none; text-align: center">Email:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.email</td>
+            }
+                </td>
+                <td style=" border: none" align="center">
+                    <button type="button">Thay đổi</button>
+                </td>
+            </tr>
+        <tr>
+            <td style=" border: none; text-align: center">Password:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.password</td>
+            }
+                </td>
+                <td style=" border: none" align="center">
+                    <button type="button">Thay đổi</button>
+                </td>
+            </tr>
+        <tr>
+            <td style=" border: none; text-align: center">Note:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.ghi_chu</td>
+            }
+                </td>
+                <td style=" border: none" align="center">
+                    <button type="button">Thay đổi</button>
+                </td>
+            </tr>
+        <tr>
+            <td style=" border: none; text-align: center">Ngày sinh:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.ngay_sinh</td>
+            }
+                </td>
+                <td style=" border: none" align="center">
+                    <button type="button">Thay đổi</button>
+                </td>
+            </tr>
+        <tr>
+            <td style=" border: none; text-align: center; padding-bottom: 5vh">Vai trò:</td>
+            <td style=" border: none">
+                @if (Model != null)
+                {
+                <td style="border: none">@Model.vai_tro</td>
+            }
+                </td>
+            </tr>
+    </table>
+</div>
+
+<script>
+    function chooseImage() {
+        document.getElementById('uploadImage').click();
+    }
+
+    function uploadImage(event) {
+        var input = event.target;
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('previewImage').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
