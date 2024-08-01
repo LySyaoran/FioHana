@@ -28,6 +28,7 @@ namespace Do_An.Controllers
                 var user = db.users.FirstOrDefault(u => u.email == a.email && u.password == hashedPassword);
                 if (user != null)
                 {
+                    Session["UserId"] = user.id;
                     return RedirectToAction("Success", new { ID = user.id });
                 }
                 else
@@ -66,20 +67,19 @@ namespace Do_An.Controllers
 
         public ActionResult Success(int ID)
         {
-            ViewBag.Tittle = "Manage Account";
+            ViewBag.Tittle = "Manager Account";
             using (var db = new nhom1ltwebEntities())
             {
-                user a = db.users.FirstOrDefault(u => u.id == ID);
-                if (a != null)
+                var user = db.users.FirstOrDefault(u => u.id == ID);
+                if (user != null)
                 {
-                    return View(a);
-                }
-                else
-                {
-                    return RedirectToAction("Login");
+                    ViewBag.ImagePath = Url.Content("~/Assets/img/Uploads/" + user.img_user);
+                    return View(user);
                 }
             }
+            return RedirectToAction("Error", "Home");
         }
+
 
         // Hàm mã hóa MD5
         private string GetMd5Hash(string input)

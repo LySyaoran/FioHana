@@ -36,7 +36,8 @@ namespace Do_An.Models
         public string vai_tro { get; set; }
         [Required(ErrorMessage = "Trường này bắt buộc")]
         public string password { get; set; }
-    
+        public string img_user { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }
     }

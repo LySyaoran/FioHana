@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="nhom1ltwebModelStoreContainer" CdmEntityContainer="nhom1ltwebEntities">
+    <EntitySetMapping Name="flower_types">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.flower_types">
+        <MappingFragment StoreEntitySet="flower_types">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="occasions">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.occasion">
+        <MappingFragment StoreEntitySet="occasions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="order_details">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.order_details">
+        <MappingFragment StoreEntitySet="order_details">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="don_hang_id" ColumnName="don_hang_id" />
+          <ScalarProperty Name="san_pham_id" ColumnName="san_pham_id" />
+          <ScalarProperty Name="so_luong" ColumnName="so_luong" />
+          <ScalarProperty Name="don_gia" ColumnName="don_gia" />
+          <ScalarProperty Name="giam_gia" ColumnName="giam_gia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="khach_hang_id" ColumnName="khach_hang_id" />
+          <ScalarProperty Name="ngay_dat_hang" ColumnName="ngay_dat_hang" />
+          <ScalarProperty Name="ngay_giao_hang" ColumnName="ngay_giao_hang" />
+          <ScalarProperty Name="tong_tien" ColumnName="tong_tien" />
+          <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+          <ScalarProperty Name="phuong_thuc_thanh_toan" ColumnName="phuong_thuc_thanh_toan" />
+          <ScalarProperty Name="hinh_thuc_giao_hang" ColumnName="hinh_thuc_giao_hang" />
+          <ScalarProperty Name="promotion_id" ColumnName="promotion_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.product">
+        <MappingFragment StoreEntitySet="products">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
+          <ScalarProperty Name="gia" ColumnName="gia" />
+          <ScalarProperty Name="hinh_anh" ColumnName="hinh_anh" />
+          <ScalarProperty Name="so_luong_ton_kho" ColumnName="so_luong_ton_kho" />
+          <ScalarProperty Name="ngay_nhap_kho" ColumnName="ngay_nhap_kho" />
+          <ScalarProperty Name="loai_hoa_id" ColumnName="loai_hoa_id" />
+          <ScalarProperty Name="dip_phu_hop_id" ColumnName="dip_phu_hop_id" />
+          <ScalarProperty Name="kich_thuoc" ColumnName="kich_thuoc" />
+          <ScalarProperty Name="id_gg" ColumnName="id_gg" />
+          <ScalarProperty Name="mau_sac" ColumnName="mau_sac" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotions">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.promotion">
+        <MappingFragment StoreEntitySet="promotions">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
+          <ScalarProperty Name="ngay_bat_dau" ColumnName="ngay_bat_dau" />
+          <ScalarProperty Name="ngay_ket_thuc" ColumnName="ngay_ket_thuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="img_user" ColumnName="img_user" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />
+          <ScalarProperty Name="so_dien_thoai" ColumnName="so_dien_thoai" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="ghi_chu" ColumnName="ghi_chu" />
+          <ScalarProperty Name="ngay_sinh" ColumnName="ngay_sinh" />
+          <ScalarProperty Name="id_google" ColumnName="id_google" />
+          <ScalarProperty Name="id_facebook" ColumnName="id_facebook" />
+          <ScalarProperty Name="vai_tro" ColumnName="vai_tro" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

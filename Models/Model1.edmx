@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="nhom1ltwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="nhom1ltwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="flower_types">
           <Key>
             <PropertyRef Name="id" />
@@ -86,6 +86,7 @@
           <Property Name="id_facebook" Type="nvarchar" MaxLength="100" />
           <Property Name="vai_tro" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="img_user" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK__order_det__don_h__6A30C649">
           <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
@@ -192,8 +193,7 @@
             <End Role="products" EntitySet="products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="nhom1ltwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -290,6 +290,7 @@
           <Property Name="vai_tro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="orders" Relationship="Self.FK__orders__khach_ha__66603565" FromRole="users" ToRole="orders" />
+          <Property Name="img_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__products__loai_h__5629CD9C">
           <End Role="flower_types" Type="Self.flower_types" Multiplicity="0..1" />
@@ -477,6 +478,7 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="nhom1ltwebModel.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="img_user" ColumnName="img_user" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ten" ColumnName="ten" />
                 <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />

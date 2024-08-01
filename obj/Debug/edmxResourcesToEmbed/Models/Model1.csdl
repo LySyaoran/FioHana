@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="nhom1ltwebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="flower_types">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="products" Relationship="Self.FK__products__loai_h__5629CD9C" FromRole="flower_types" ToRole="products" />
+  </EntityType>
+  <EntityType Name="occasion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="products" Relationship="Self.FK__products__dip_ph__571DF1D5" FromRole="occasions" ToRole="products" />
+  </EntityType>
+  <EntityType Name="order_details">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="don_hang_id" Type="Int32" />
+    <Property Name="san_pham_id" Type="Int32" />
+    <Property Name="so_luong" Type="Int32" />
+    <Property Name="don_gia" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="giam_gia" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="order" Relationship="Self.FK__order_det__don_h__6A30C649" FromRole="order_details" ToRole="orders" />
+    <NavigationProperty Name="product" Relationship="Self.FK__order_det__san_p__6B24EA82" FromRole="order_details" ToRole="products" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="khach_hang_id" Type="Int32" />
+    <Property Name="ngay_dat_hang" Type="DateTime" Precision="0" />
+    <Property Name="ngay_giao_hang" Type="DateTime" Precision="0" />
+    <Property Name="tong_tien" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="trang_thai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="phuong_thuc_thanh_toan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hinh_thuc_giao_hang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="promotion_id" Type="Int32" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__don_h__6A30C649" FromRole="orders" ToRole="order_details" />
+    <NavigationProperty Name="user" Relationship="Self.FK__orders__khach_ha__66603565" FromRole="orders" ToRole="users" />
+    <NavigationProperty Name="promotion" Relationship="Self.FK__orders__promotio__6754599E" FromRole="orders" ToRole="promotions" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="mo_ta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="gia" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="hinh_anh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="so_luong_ton_kho" Type="Int32" />
+    <Property Name="ngay_nhap_kho" Type="DateTime" Precision="0" />
+    <Property Name="loai_hoa_id" Type="Int32" />
+    <Property Name="dip_phu_hop_id" Type="Int32" />
+    <Property Name="kich_thuoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_gg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mau_sac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="flower_types" Relationship="Self.FK__products__loai_h__5629CD9C" FromRole="products" ToRole="flower_types" />
+    <NavigationProperty Name="occasion" Relationship="Self.FK__products__dip_ph__571DF1D5" FromRole="products" ToRole="occasions" />
+    <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__san_p__6B24EA82" FromRole="products" ToRole="order_details" />
+  </EntityType>
+  <EntityType Name="promotion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="mo_ta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ngay_bat_dau" Type="DateTime" Precision="0" />
+    <Property Name="ngay_ket_thuc" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__promotio__6754599E" FromRole="promotions" ToRole="orders" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="dia_chi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="so_dien_thoai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ghi_chu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ngay_sinh" Type="DateTime" Precision="0" />
+    <Property Name="id_google" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="id_facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="vai_tro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__khach_ha__66603565" FromRole="users" ToRole="orders" />
+    <Property Name="img_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__products__loai_h__5629CD9C">
+    <End Role="flower_types" Type="Self.flower_types" Multiplicity="0..1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="flower_types">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="loai_hoa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__dip_ph__571DF1D5">
+    <End Role="occasions" Type="Self.occasion" Multiplicity="0..1" />
+    <End Role="products" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="occasions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="dip_phu_hop_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_det__don_h__6A30C649">
+    <End Role="orders" Type="Self.order" Multiplicity="0..1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="don_hang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order_det__san_p__6B24EA82">
+    <End Role="products" Type="Self.product" Multiplicity="0..1" />
+    <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order_details">
+        <PropertyRef Name="san_pham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__khach_ha__66603565">
+    <End Role="users" Type="Self.user" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="khach_hang_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__promotio__6754599E">
+    <End Role="promotions" Type="Self.promotion" Multiplicity="0..1" />
+    <End Role="orders" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="promotions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="promotion_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="nhom1ltwebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="flower_types" EntityType="Self.flower_types" />
+    <EntitySet Name="occasions" EntityType="Self.occasion" />
+    <EntitySet Name="order_details" EntityType="Self.order_details" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="promotions" EntityType="Self.promotion" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK__products__loai_h__5629CD9C" Association="Self.FK__products__loai_h__5629CD9C">
+      <End Role="flower_types" EntitySet="flower_types" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__dip_ph__571DF1D5" Association="Self.FK__products__dip_ph__571DF1D5">
+      <End Role="occasions" EntitySet="occasions" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_det__don_h__6A30C649" Association="Self.FK__order_det__don_h__6A30C649">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order_det__san_p__6B24EA82" Association="Self.FK__order_det__san_p__6B24EA82">
+      <End Role="products" EntitySet="products" />
+      <End Role="order_details" EntitySet="order_details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__khach_ha__66603565" Association="Self.FK__orders__khach_ha__66603565">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__promotio__6754599E" Association="Self.FK__orders__promotio__6754599E">
+      <End Role="promotions" EntitySet="promotions" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
