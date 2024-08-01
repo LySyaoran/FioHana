@@ -1,6 +1,6 @@
 ﻿@model Do_An.Models.user
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Sign Up";
     Layout = "~/Views/_shared/_LayoutPage1.cshtml";
 }
 
@@ -10,87 +10,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <style>
-        table {
-            border: 1px solid white;
-            border-collapse: collapse;
-            color: white;
-            background-color: #59ab6e;
-            border-radius: 50px;
-        }
-
-        .lable_item {
-            padding: 2vw;
-        }
-
-        .input_item {
-            margin-right: 2vw;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
 </head>
 <body>
     @using (Html.BeginForm("Signup", "Login", FormMethod.Post, new { onsubmit = "return validatePassword();" }))
     {
         Html.AntiForgeryToken();
-        <table style="margin: 5vw auto; width: 40vw">
-            <tr>
-                <th style="padding: 1vw 0; font-size: 2vw; text-align: center; font-size: 50px">Sign Up</th>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">Tên đăng nhập:</p>
-                    @Html.TextBoxFor(m => m.ten, new { style = "width: 100%", placeholder = "Hãy nhập tên đăng nhập", @class = "input-field" })
-                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.ten)</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">Email:</p>
-                    @Html.TextBoxFor(m => m.email, new { style = "width: 100%", placeholder = "Hãy nhập Email", @class = "input-field" })
-                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.email)</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">Số điện thoại:</p>
-                    @Html.TextBoxFor(m => m.so_dien_thoai, new { style = "width: 100%", placeholder = "Hãy nhập số điện thoại", @class = "input-field" })
-                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.so_dien_thoai)</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">PassWord:</p>
-                    @Html.PasswordFor(m => m.password, new { id = "password", style = "width: 100%", placeholder = "Hãy nhập Pass Word", @class = "input-field" })
-                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.password)</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">RepassWord:</p>
-                    <input id="repassword" type="password" style="width: 100%" placeholder="Xác nhận lại Pass Word" />
-                    <p style="color: white" class="error_text"></p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item" style="text-align: center;">
-                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Hiện mật khẩu
-                </td>
-            </tr>
-            <tr>
-                <td align="center" style="padding: 1vw 0; font-size: 2vw">
-                    <button type="submit" class="btn_buy" style="float: none; background-color: white; color: #59ab6e">Submit</button>
-                </td>
-            </tr>
-        </table>
+        <div class="container my-5" id="signup">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-sm-10">
+                    <div class="card shadow-sm" style="border-radius: 10px;">
+                        <div class="card-header text-center bg-success text-white" style="border-radius: 10px 10px 0 0;">
+                            <h2>Sign Up</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="ten" class="form-label">Tên đăng nhập:</label>
+                                @Html.TextBoxFor(m => m.ten, new { @class = "form-control", placeholder = "Hãy nhập tên đăng nhập" })
+                                <div class="text-danger">
+                                    @Html.ValidationMessageFor(m => m.ten)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email:</label>
+                                @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "Hãy nhập Email" })
+                                <div class="text-danger">
+                                    @Html.ValidationMessageFor(m => m.email)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="so_dien_thoai" class="form-label">Số điện thoại:</label>
+                                @Html.TextBoxFor(m => m.so_dien_thoai, new { @class = "form-control", placeholder = "Hãy nhập số điện thoại" })
+                                <div class="text-danger">
+                                    @Html.ValidationMessageFor(m => m.so_dien_thoai)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">PassWord:</label>
+                                @Html.PasswordFor(m => m.password, new { id = "password", @class = "form-control", placeholder = "Hãy nhập Pass Word" })
+                                <div class="text-danger">
+                                    @Html.ValidationMessageFor(m => m.password)
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="repassword" class="form-label">RepassWord:</label>
+                                <input id="repassword" type="password" class="form-control" placeholder="Xác nhận lại Pass Word" />
+                                <div class="text-danger error_text"></div>
+                            </div>
+                            <div class="form-check mb-3 text-center d-flex justify-content-center align-items-center">
+                                <input class="form-check-input me-2" type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+                                <label class="form-check-label" for="showPassword">Hiện mật khẩu</label>
+                            </div>
+                            <div class="text-center mb-3">
+                                <p>Nếu bạn đã có tài khoản, hãy <a href="~/Login/Login#login" class="link-success">Log In</a></p>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 
     <script>

@@ -249,6 +249,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -316,7 +317,6 @@
     <Content Include="Views\Home\Report.cshtml" />
     <Content Include="Views\Login\Success.cshtml" />
     <Content Include="Views\Login\Signup.cshtml" />
-    <Content Include="Views\_shared\_LayoutPage2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -327,6 +327,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\img\Hoa\" />
+    <Folder Include="Assets\img\Uploads\" />
+    <Folder Include="Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

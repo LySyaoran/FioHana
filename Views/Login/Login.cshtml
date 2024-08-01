@@ -11,115 +11,204 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     <style>
-        table {
-            border: 1px solid white;
-            border-collapse: collapse;
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            transition: opacity 0.5s ease;
+            opacity: 0;
+            display: none;
+        }
+
+            .form-container.show {
+                display: block;
+                opacity: 1;
+            }
+
+            .form-container.hidden {
+                opacity: 0;
+            }
+
+        .form-header {
+            border-radius: 10px 10px 0 0;
+            background-color: #28a745;
             color: white;
-            background-color: #59ab6e;
-            border-radius: 50px;
         }
 
-        .lable_item {
-            padding: 2vw;
+        .form-label {
+            font-size: 0.875rem;
         }
 
-        .input_item {
-            margin-right: 2vw;
+        .error-text {
+            color: #dc3545;
         }
-
-        input:focus {
-            outline: none;
-        }
-
-        p {
-            margin: 0;
-            padding: 0;
+        .btn-success:hover {
+            background-color: white !important;
+            color: #28a745;
         }
     </style>
 </head>
 <body>
-    @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { onsubmit = "return handleRememberMe();" }))
-    {
-        Html.AntiForgeryToken();
-        <table style="margin: 5vw auto; width: 40vw">
-            <tr>
-                <th style="padding: 1vw 0; font-size: 2vw; text-align: center; font-size: 50px">Log In</th>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">Email:</p>
-                    @Html.TextBoxFor(m => m.email, new { id = "email", style = "width: 100%", placeholder = "Hãy nhập Email", @class = "input-field" })
-                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.email)</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item">
-                    <p style="text-align: center">PassWord:</p>
-                    @Html.PasswordFor(m => m.password, new { id = "password", style = "width: 100%", placeholder = "Hãy nhập Pass Word", @class = "input-field" })
-                    <p style="color: white; text-align: center" class="validation-message">@Html.ValidationMessageFor(m => m.password)</p>
-                </td>
-            </tr>
-            <tr>
-                <td class="lable_item" style="text-align: center;">
-                    <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()"> Hiện mật khẩu
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <input type="checkbox" id="rememberMe" name="remember" />
-                    <label style="margin-left: 3px">Lưu đăng nhập?</label>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <label style="margin: 2vw 2vw 1vw 2vw; display: block">Nếu bạn chưa có tài khoản? Hãy nhấn vào <a href="~/Login/Signup" style="color: black">Sign Up</a></label>
-                </td>
-            </tr>
-            <tr>
-                <td align="center" style="padding: 1vw 0; font-size: 2vw">
-                    <button type="submit" class="btn_buy" style="float: none; background-color: white; color: #59ab6e">Submit</button>
-                </td>
-            </tr>
-        </table>
-    }
+    <div class="container mt-5">
+        <!-- Log In Form -->
+        <div id="loginForm" class="form-container show">
+            @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { onsubmit = "return handleRememberMe();" }))
+            {
+                Html.AntiForgeryToken();
+                <div class="card shadow-sm">
+                    <div class="card-header form-header text-center">
+                        <h2>Log In</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            @Html.TextBoxFor(m => m.email, new { id = "email", @class = "form-control input-field", placeholder = "Hãy nhập Email" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(m => m.email)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">PassWord:</label>
+                            @Html.PasswordFor(m => m.password, new { id = "passwordLogin", @class = "form-control input-field", placeholder = "Hãy nhập Pass Word" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(m => m.password)
+                            </div>
+                        </div>
+                        <div class="form-check mb-3 text-center d-flex justify-content-center align-items-center">
+                            <input class="form-check-input me-2" type="checkbox" id="showPasswordLogin" onclick="togglePasswordVisibility('login')">
+                            <label class="form-check-label" for="showPasswordLogin">Hiện mật khẩu</label>
+                        </div>
+                        <div class="form-check mb-3 text-center d-flex justify-content-center align-items-center">
+                            <input class="form-check-input me-2" type="checkbox" id="rememberMe" name="remember">
+                            <label class="form-check-label" for="rememberMe">Lưu đăng nhập?</label>
+                        </div>
+                        <div class="text-center mb-3">
+                            <label>Nếu bạn chưa có tài khoản? Hãy nhấn vào <a href="~/Login/Login#signupForm" class="link-success" onclick="toggleForms()">Sign Up</a></label>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signupForm" class="form-container hidden">
+            @using (Html.BeginForm("Signup", "Login", FormMethod.Post, new { onsubmit = "return validatePassword();" }))
+            {
+                Html.AntiForgeryToken();
+                <div class="card shadow-sm">
+                    <div class="card-header form-header text-center">
+                        <h2>Sign Up</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="ten" class="form-label">Tên đăng nhập:</label>
+                            @Html.TextBoxFor(m => m.ten, new { @class = "form-control input-field", placeholder = "Hãy nhập tên đăng nhập" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(m => m.ten)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailSignup" class="form-label">Email:</label>
+                            @Html.TextBoxFor(m => m.email, new { id = "emailSignup", @class = "form-control input-field", placeholder = "Hãy nhập Email" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(m => m.email)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="so_dien_thoai" class="form-label">Số điện thoại:</label>
+                            @Html.TextBoxFor(m => m.so_dien_thoai, new { @class = "form-control input-field", placeholder = "Hãy nhập số điện thoại" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(m => m.so_dien_thoai)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordSignup" class="form-label">PassWord:</label>
+                            @Html.PasswordFor(m => m.password, new { id = "passwordSignup", @class = "form-control input-field", placeholder = "Hãy nhập Pass Word" })
+                            <div class="text-danger">
+                                @Html.ValidationMessageFor(m => m.password)
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="repassword" class="form-label">RepassWord:</label>
+                            <input id="repassword" type="password" class="form-control input-field" placeholder="Xác nhận lại Pass Word" />
+                            <div class="text-danger error_text"></div>
+                        </div>
+                        <div class="form-check mb-3 text-center d-flex justify-content-center align-items-center">
+                            <input class="form-check-input me-2" type="checkbox" id="showPasswordSignup" onclick="togglePasswordVisibility('signup')">
+                            <label class="form-check-label" for="showPasswordSignup">Hiện mật khẩu</label>
+                        </div>
+                        <div class="text-center mb-3">
+                            <p>Nếu bạn đã có tài khoản, hãy <a href="#login" class="link-success" onclick="toggleForms()">Log In</a></p>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var inputFields = document.querySelectorAll('.input-field');
-            inputFields.forEach(function (input) {
-                input.addEventListener('input', function () {
-                    var validationMessage = input.parentElement.querySelector('.validation-message');
-                    if (validationMessage) {
-                        validationMessage.textContent = '';
-                    }
-                });
-            });
-
             // Tự động điền thông tin đăng nhập từ cookie nếu có
             var email = getCookie('email');
             var password = getCookie('password');
             if (email && password) {
                 document.getElementById('email').value = email;
-                document.getElementById('password').value = password;
+                document.getElementById('passwordLogin').value = password;
                 document.getElementById('rememberMe').checked = true;
             }
         });
 
-        function togglePasswordVisibility() {
-            var passwordField = document.getElementById('password');
-            var showPasswordCheckbox = document.getElementById('showPassword');
+        function togglePasswordVisibility(formType) {
+            var passwordFields;
+            var showPasswordCheckbox;
 
-            if (showPasswordCheckbox.checked) {
-                passwordField.type = 'text';
+            if (formType === 'login') {
+                passwordFields = [document.getElementById('passwordLogin')];
+                showPasswordCheckbox = document.getElementById('showPasswordLogin');
+            } else if (formType === 'signup') {
+                passwordFields = [document.getElementById('passwordSignup'), document.getElementById('repassword')];
+                showPasswordCheckbox = document.getElementById('showPasswordSignup');
+            }
+
+            passwordFields.forEach(function (field) {
+                if (showPasswordCheckbox.checked) {
+                    field.type = 'text';
+                } else {
+                    field.type = 'password';
+                }
+            });
+        }
+
+        function toggleForms() {
+            var loginForm = document.getElementById('loginForm');
+            var signupForm = document.getElementById('signupForm');
+
+            if (loginForm.classList.contains('show')) {
+                loginForm.classList.remove('show');
+                loginForm.classList.add('hidden');
+                signupForm.classList.remove('hidden');
+                signupForm.classList.add('show');
             } else {
-                passwordField.type = 'password';
+                signupForm.classList.remove('show');
+                signupForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                loginForm.classList.add('show');
             }
         }
 
         function handleRememberMe() {
             var rememberMe = document.getElementById('rememberMe').checked;
             var email = document.getElementById('email').value;
-            var password = document.getElementById('password').value;
+            var password = document.getElementById('passwordLogin').value;
 
             if (rememberMe) {
                 setCookie('email', email, 7); // Lưu email trong 7 ngày

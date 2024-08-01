@@ -4,3 +4,9 @@ Custom Css
 #carousel-related-product{
     display: flex;
 }
+
+@media (min-width: 768px) {
+    .container-fluid {
+        flex-direction: row;
+    }
+}
