@@ -38,30 +38,66 @@ namespace Do_An.Controllers
             return View(products.ToList());
         }
 
-        public ActionResult PhanLoaiHoa(int id, string tieu_chi)
+        public ActionResult PhanLoaiHoa(int id, string tieu_chi, string sortOrder)
         {
-            var products = new List<product>();
+            if (string.IsNullOrEmpty(sortOrder))
+            {
+                sortOrder = "default";
+            }
+
+            ViewBag.Tittle = "Shop";
+            var products = db.products.AsQueryable();
 
             if (tieu_chi.Equals("loai_hoa"))
             {
-                products = db.products.Where(p => p.loai_hoa_id == id).ToList();
+                products = products.Where(p => p.loai_hoa_id == id);
             }
             else if (tieu_chi.Equals("dip"))
             {
-                products = db.products.Where(p => p.dip_phu_hop_id == id).ToList();
+                products = db.products.Where(p => p.dip_phu_hop_id == id);
             }
             else
             {
-                products = db.products.Where(p => p.kich_thuoc.Equals(tieu_chi)).ToList();
+                products = db.products.Where(p => p.kich_thuoc.Equals(tieu_chi));
             }
 
+            switch (sortOrder)
+            {
+                case "desc":
+                    products = products.OrderByDescending(p => p.gia);
+                    break;
+                case "asc":
+                    products = products.OrderBy(p => p.gia);
+                    break;
+                default:
+                    products = products.OrderBy(p => p.id);
+                    break;
+            }
+
+            
             return View("Shop", products);
         }
 
-        public ActionResult ShopSingle()
+        public ActionResult ShopSingle(int id)
         {
-            ViewBag.Tittle = "Shop Detail";
-            return View();
+            var product = db.products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            var occasion = db.occasions.Find(product.dip_phu_hop_id).ten;
+            var relatedProducts = db.products
+                .Where(p => p.loai_hoa_id == product.loai_hoa_id && p.id != product.id)
+                .ToList();
+
+            var viewModel = new ShopSingleViewModel
+            {
+                Product = product,
+                RelatedProducts = relatedProducts,
+                Occasion = occasion
+            };
+
+            return View(viewModel);
         }
     }
 }

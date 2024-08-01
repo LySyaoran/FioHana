@@ -105,6 +105,18 @@
     <Content Include="Assets\css\slick.min.css" />
     <Content Include="Assets\css\templatemo.css" />
     <Content Include="Assets\css\templatemo.min.css" />
+    <Content Include="Assets\img\HoaHong\rose1.jpg" />
+    <Content Include="Assets\img\HoaHong\rose2.jpg" />
+    <Content Include="Assets\img\HoaHong\rose3.jpg" />
+    <Content Include="Assets\img\HoaHong\rose4.jpg" />
+    <Content Include="Assets\img\HoaHong\rose5.jpg" />
+    <Content Include="Assets\img\HoaHong\rose6.jpg" />
+    <Content Include="Assets\img\HoaLan\16-canh-vang-chau-thuyen-hoa-tet.jpg" />
+    <Content Include="Assets\img\HoaLan\chau_lan_ho_diep_vang.jpg" />
+    <Content Include="Assets\img\HoaLan\loi_trai_tim_hong_2.jpg" />
+    <Content Include="Assets\img\HoaLan\thuyenhoa2.png" />
+    <Content Include="Assets\img\HoaLan\TT217B-NEW-430x573.jpg" />
+    <Content Include="Assets\img\HoaLan\TT220-new.png" />
     <Content Include="Assets\img\about-hero.svg" />
     <Content Include="Assets\img\ajax-loader.gif" />
     <Content Include="Assets\img\apple-icon.png" />
@@ -118,6 +130,11 @@
     <Content Include="Assets\img\category_img_01.jpg" />
     <Content Include="Assets\img\category_img_02.jpg" />
     <Content Include="Assets\img\category_img_03.jpg" />
+    <Content Include="Assets\img\HoaLy\ly1.jpg" />
+    <Content Include="Assets\img\HoaLy\ly2.jpg" />
+    <Content Include="Assets\img\HoaLy\ly3.jpg" />
+    <Content Include="Assets\img\HoaLy\ly4.jpg" />
+    <Content Include="Assets\img\HoaLy\ly5.jpg" />
     <Content Include="Assets\img\Index\DamBaoChatLuong.png" />
     <Content Include="Assets\img\favicon.ico" />
     <Content Include="Assets\img\feature_prod_01.jpg" />
@@ -156,6 +173,13 @@
     <Content Include="Assets\img\shop_09.jpg" />
     <Content Include="Assets\img\shop_10.jpg" />
     <Content Include="Assets\img\shop_11.jpg" />
+    <Content Include="Assets\img\Sunflower\GioMay_HuongDuong_new-300x300.jpg" />
+    <Content Include="Assets\img\Sunflower\HappySunflower.jpg" />
+    <Content Include="Assets\img\Sunflower\HopHoa_Congratulation.png" />
+    <Content Include="Assets\img\Sunflower\KeHoa_Congratulation.jpg" />
+    <Content Include="Assets\img\Sunflower\Sunflower_mixBaby-300x300.jpg" />
+    <Content Include="Assets\img\Sunflower\Sunflower_Special.jpg" />
+    <Content Include="Assets\img\Sunflower\SunnyDay.jpg" />
     <Content Include="Assets\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\jquery-1.11.0.min.js" />
@@ -266,6 +290,7 @@
     <Compile Include="Models\promotion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShopSingleViewModel.cs" />
     <Compile Include="Models\user.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -301,6 +326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\img\Hoa\" />
     <Folder Include="Assets\img\Uploads\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
