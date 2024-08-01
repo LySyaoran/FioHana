@@ -104,6 +104,25 @@ body, ul, li, p, a, label, input, div {
   font-size: 15px;
   margin-top: 20px;
 }
+
+.product-wap .card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-wap .card-img {
+    width: 100%;
+    height: 370px; /* Set a fixed height for the image container */
+    object-fit: cover; /* Ensure the image covers the container while maintaining its aspect ratio */
+}
+
+.product-wap .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 /* Brand */
 .brand-img {
   filter: grayscale(100%);
