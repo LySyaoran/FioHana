@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Do_An.Models.order_details>
+@using System.Globalization
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<!-- Start Content -->
+<section class="h-100 h-custom">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="h5">Shopping Bag</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        <div class="d-flex align-items-center">
+                                            <img src="@Url.Content("~/Assets/img/" + item.product.hinh_anh)" class="img-fluid rounded-3" style="width: 120px;" alt="@item.product.ten">
+                                            <div class="flex-column ms-4">
+                                                <p class="mb-2">@item.product.ten</p>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="align-middle">
+                                        <div class="d-flex flex-row">
+                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+
+                                            <input id="form1" min="0" name="quantity" value="@item.so_luong" type="number"
+                                                   class="form-control form-control-sm" style="width: 50px;" />
+
+                                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                                                    onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                    <td class="align-middle">
+                                        @*<p class="mb-0" style="font-weight: 500;">@item.don_gia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</p>*@
+                                    </td>
+                                    <td class="align-middle">
+                                        <p class="mb-0" style="font-weight: 500;">@(((decimal)(item.don_gia * item.so_luong)).ToString("C", CultureInfo.GetCultureInfo("vi-VN")))</p>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card shadow-2-strong mb-5 mb-lg-0" style="border-radius: 16px;">
+                    <div class="card-body p-4">
+
+                        <div class="row">
+                            <div class="col-lg-4 col-xl-3">
+                                <div class="d-flex justify-content-between" style="font-weight: 500;">
+                                    <p class="mb-2">Subtotal</p>
+                                    <p class="mb-2">
+                                        @{
+                                            decimal subtotal = (decimal)Model.Sum(item => item.don_gia * item.so_luong);
+                                            <text>@subtotal.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</text>
+                                        }
+                                    </p>
+                                </div>
+
+                                <div class="d-flex justify-content-between" style="font-weight: 500;">
+                                    <p class="mb-0">Shipping</p>
+                                    <p class="mb-0">$2.99</p>
+                                </div>
+
+                                <hr class="my-4">
+
+                                <div class="d-flex justify-content-between mb-4" style="font-weight: 500;">
+                                    <p class="mb-2">Total (tax included)</p>
+                                    <p class="mb-2">
+                                        @{
+                                            decimal total = subtotal + 2.99M; // assuming flat shipping rate
+                                            <text>@total.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</text>
+                                        }
+                                    </p>
+                                </div>
+
+                                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block btn-lg">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Checkout</span>
+                                        <span>@total.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Content -->
