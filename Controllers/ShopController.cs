@@ -99,5 +99,16 @@ namespace Do_An.Controllers
 
             return View(viewModel);
         }
+
+
+
+        public ActionResult Product_Search(string search)
+        {
+            ViewBag.Tittle = "Product_Search";
+            var products = db.products
+                .Where(p => p.ten.ToLower().Contains(search.ToLower()))
+                .ToList();
+            return View("Product_Search", products);
+        }
     }
 }

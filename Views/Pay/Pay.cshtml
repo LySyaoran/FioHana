@@ -1,0 +1,493 @@
+﻿
+@{
+    ViewBag.Title = "Pay";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<body class="bg-light">
+
+    <div class="container">
+        <main>
+            <div class="row g-5 py-5">
+                <div class="col-md-5 col-lg-4 order-md-last">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Your cart</span>
+                        <span class="badge bg-primary rounded-pill">3</span>
+                    </h4>
+                    <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Tên sản phẩm 1</h6>
+                                <small class="text-muted">Số lượng</small>
+                            </div>
+                            <span class="text-muted">38.000Đ</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Tên sản phẩm 2</h6>
+                                <small class="text-muted">Số lượng</small>
+                            </div>
+                            <span class="text-muted">80.000Đ</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                            <div>
+                                <h6 class="my-0">Phí vận chuyển</h6>
+                                <small class="text-muted">Đơn vị vận chuyển: ViettelPost</small>
+                            </div>
+                            <span class="text-muted">32.000Đ</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between bg-light">
+                            <div class="text-success">
+                                <h6 class="my-0">Mã giảm giá</h6>
+                                <small>(FIOHANACB)</small>
+                            </div>
+                            <span class="text-success">−20.000Đ</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Thành tiền</span>
+                            <strong>130.000Đ</strong>
+                        </li>
+                    </ul>
+
+                    <form class="card p-2">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Mã giảm giá">
+                            <button type="submit" style="background-color: #59ab6e" class="btn btn-secondary">Xác nhận</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Địa chỉ nhận hàng</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label">Họ</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Nguyễn Trần" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid first name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="lastName" class="form-label">Tên</label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Hải Yến" value="" required>
+                                <div class="invalid-feedback">
+                                    Valid last name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address for shipping updates.
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label">Địa chỉ</label>
+                                <input type="text" class="form-control" id="address" placeholder="140 Lê Trọng Tấn, Tây Thạnh, Tân Phú" required>
+                                <div class="invalid-feedback">
+                                    Please enter your shipping address.
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="province" class="form-label">Tỉnh/Thành phố</label>
+                                <select class="form-select" id="province" required>
+                                    <option value="">Vui lòng chọn</option>
+                                    <option value="HCM">TP. Hồ Chí Minh</option>
+                                    <option value="HN">Hà Nội</option>
+                                    <option value="AG">An Giang</option>
+                                    <option value="BRVT">Bà Rịa - Vũng Tàu</option>
+                                    <option value="BG">Bắc Giang</option>
+                                    <option value="BK">Bắc Kạn</option>
+                                    <option value="BL">Bạc Liêu</option>
+                                    <option value="BN">Bắc Ninh</option>
+                                    <option value="BT">Bến Tre</option>
+                                    <option value="BD">Bình Định</option>
+                                    <option value="BD1">Bình Dương</option>
+                                    <option value="BP">Bình Phước</option>
+                                    <option value="BT1">Bình Thuận</option>
+                                    <option value="CM">Cà Mau</option>
+                                    <option value="CT">Cần Thơ</option>
+                                    <option value="CB">Cao Bằng</option>
+                                    <option value="DN">Đà Nẵng</option>
+                                    <option value="DL">Đắk Lắk</option>
+                                    <option value="DN1">Đắk Nông</option>
+                                    <option value="DB">Điện Biên</option>
+                                    <option value="DN2">Đồng Nai</option>
+                                    <option value="DT">Đồng Tháp</option>
+                                    <option value="GL">Gia Lai</option>
+                                    <option value="HG">Hà Giang</option>
+                                    <option value="HN1">Hà Nam</option>
+                                    <option value="HN2">Hà Nội</option>
+                                    <option value="HT">Hà Tĩnh</option>
+                                    <option value="HD">Hải Dương</option>
+                                    <option value="HP">Hải Phòng</option>
+                                    <option value="HG1">Hậu Giang</option>
+                                    <option value="HB">Hòa Bình</option>
+                                    <option value="HY">Hưng Yên</option>
+                                    <option value="KH">Khánh Hòa</option>
+                                    <option value="KG">Kiên Giang</option>
+                                    <option value="KT">Kon Tum</option>
+                                    <option value="LC">Lai Châu</option>
+                                    <option value="LD">Lâm Đồng</option>
+                                    <option value="LS">Lạng Sơn</option>
+                                    <option value="LC1">Lào Cai</option>
+                                    <option value="LA">Long An</option>
+                                    <option value="ND">Nam Định</option>
+                                    <option value="NA">Nghệ An</option>
+                                    <option value="NB">Ninh Bình</option>
+                                    <option value="NT">Ninh Thuận</option>
+                                    <option value="PT">Phú Thọ</option>
+                                    <option value="PY">Phú Yên</option>
+                                    <option value="QB">Quảng Bình</option>
+                                    <option value="QN">Quảng Nam</option>
+                                    <option value="QN1">Quảng Ngãi</option>
+                                    <option value="QN2">Quảng Ninh</option>
+                                    <option value="QT">Quảng Trị</option>
+                                    <option value="ST">Sóc Trăng</option>
+                                    <option value="SL">Sơn La</option>
+                                    <option value="TN">Tây Ninh</option>
+                                    <option value="TB">Thái Bình</option>
+                                    <option value="TN1">Thái Nguyên</option>
+                                    <option value="TH">Thanh Hóa</option>
+                                    <option value="TT">Thừa Thiên Huế</option>
+                                    <option value="TG">Tiền Giang</option>
+                                    <option value="TV">Trà Vinh</option>
+                                    <option value="TQ">Tuyên Quang</option>
+                                    <option value="VL">Vĩnh Long</option>
+                                    <option value="VP">Vĩnh Phúc</option>
+                                    <option value="YB">Yên Bái</option>
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn tỉnh/thành phố.
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="district" class="form-label">Quận/Huyện</label>
+                                <select class="form-select" id="district" required>
+                                    <option value="">Vui lòng chọn</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn quận/huyện.
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="ward" class="form-label">Xã/Phường</label>
+                                <select class="form-select" id="ward" required>
+                                    <option value="">Vui lòng chọn</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Vui lòng chọn xã/phường.
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="save-info">
+                            <label class="form-check-label" for="save-info">Lưu thông tin này cho lần sau</label>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <h4 class="mb-3">Phương thức thanh toán</h4>
+
+                        <div class="my-3">
+                            <div class="form-check">
+                                <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+                                <label class="form-check-label" for="credit">Thanh toán COD (bằng tiền mặt)</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+                                <label class="form-check-label" for="debit">Ví Momo</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                                <label class="form-check-label" for="paypal">VNPAY</label>
+                            </div>
+                            <div class="form-check">
+                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+                                <label class="form-check-label" for="paypal">Internet Panking</label>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        @*<div class="row gy-3">
+                            <div class="col-md-6">
+                                <label for="cc-name" class="form-label">Name on card</label>
+                                <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                <small class="text-muted">Full name as displayed on card</small>
+                                <div class="invalid-feedback">
+                                    Name on card is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="cc-number" class="form-label">Credit card number</label>
+                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Credit card number is required
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="cc-expiration" class="form-label">Expiration</label>
+                                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Expiration date required
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="cc-cvv" class="form-label">CVV</label>
+                                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Security code required
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">*@
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Thanh Toán</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="form-validation.js"></script>
+
+    <script>
+        const districts = {
+            'HCM': ['Quận 1', 'Quận 2', 'Quận 3', 'Quận 4', 'Quận 5', 'Quận 6', 'Quận 7', 'Quận 8', 'Quận 9', 'Quận 10', 'Quận 11', 'Quận 12', 'Quận Bình Tân', 'Quận Bình Thạnh', 'Quận Gò Vấp', 'Quận Phú Nhuận', 'Quận Tân Bình', 'Quận Tân Phú', 'Quận Thủ Đức', 'Huyện Bình Chánh', 'Huyện Cần Giờ', 'Huyện Củ Chi', 'Huyện Hóc Môn', 'Huyện Nhà Bè'],
+            'HN': ['Ba Đình', 'Hoàn Kiếm', 'Tây Hồ', 'Long Biên', 'Cầu Giấy', 'Đống Đa', 'Hai Bà Trưng', 'Hoàng Mai', 'Thanh Xuân', 'Sóc Sơn', 'Đông Anh', 'Gia Lâm', 'Nam Từ Liêm', 'Thanh Trì', 'Bắc Từ Liêm', 'Mê Linh', 'Hà Đông', 'Sơn Tây', 'Ba Vì', 'Phúc Thọ', 'Đan Phượng', 'Hoài Đức', 'Quốc Oai', 'Thạch Thất', 'Chương Mỹ', 'Thanh Oai', 'Thường Tín', 'Phú Xuyên', 'Ứng Hòa', 'Mỹ Đức'],
+            'AG': ['Thành phố Long Xuyên', 'Thành phố Châu Đốc', 'Huyện An Phú', 'Huyện Châu Phú', 'Huyện Châu Thành', 'Huyện Châu Thành A', 'Huyện Phú Tân', 'Huyện Tân Châu', 'Huyện Tân Hưng', 'Huyện Tân Thạnh', 'Huyện Tân Hiệp', 'Huyện An Giang', 'Huyện Đức Huệ', 'Huyện Đức Huệ', 'Huyện Bến Cát', 'Huyện Phú Riềng'],
+            'BRVT': ['Thành phố Vũng Tàu', 'Thành phố Bà Rịa', 'Huyện Châu Đức', 'Huyện Côn Đảo', 'Huyện Đất Đỏ', 'Huyện Long Điền', 'Huyện Tân Thành'],
+            'BG': ['Thành phố Bắc Giang', 'Huyện Hiệp Hòa', 'Huyện Lạng Giang', 'Huyện Lục Nam', 'Huyện Lục Ngạn', 'Huyện Sơn Động', 'Huyện Tân Yên', 'Huyện Yên Thế'],
+            'BK': ['Thành phố Bắc Kạn', 'Huyện Ba Bể', 'Huyện Bạch Thông', 'Huyện Chợ Đồn', 'Huyện Chợ Mới', 'Huyện Na Rì', 'Huyện Ngân Sơn', 'Huyện Pác Nặm'],
+            'BL': ['Thành phố Bạc Liêu', 'Huyện Bạc Liêu', 'Huyện Đông Hải', 'Huyện Hòa Bình', 'Huyện Hồng Dân', 'Huyện Phước Long', 'Huyện Vĩnh Lợi'],
+            'BN': ['Thành phố Bắc Ninh', 'Huyện Gia Bình', 'Huyện Lương Tài', 'Huyện Quế Võ', 'Huyện Thuận Thành', 'Huyện Tiên Du', 'Huyện Yên Phong', 'Huyện Yên Phong'],
+            'BT': ['Thành phố Bến Tre', 'Huyện Ba Tri', 'Huyện Bình Đại', 'Huyện Châu Thành', 'Huyện Chợ Lách', 'Huyện Giồng Trôm', 'Huyện Mỏ Cày Bắc', 'Huyện Mỏ Cày Nam', 'Huyện Thạnh Phú', 'Huyện Vĩnh Long'],
+            'BD': ['Thành phố Bình Định', 'Huyện An Lão', 'Huyện An Nhơn', 'Huyện Hoài Ân', 'Huyện Hoài Nhơn', 'Huyện Phù Cát', 'Huyện Phù Mỹ', 'Huyện Tuy Phước', 'Huyện Vân Canh', 'Huyện Vân Phong'],
+            'BD1': ['Thành phố Thủ Dầu Một', 'Huyện Bến Cát', 'Huyện Dầu Tiếng', 'Huyện Phú Giáo', 'Huyện Tân Uyên', 'Huyện Bàu Bàng', 'Huyện Bắc Tân Uyên', 'Huyện Bến Cát'],
+            'BP': ['Thành phố Đồng Xoài', 'Huyện Bù Đăng', 'Huyện Bù Đốp', 'Huyện Bù Gia Mập', 'Huyện Chơn Thành', 'Huyện Hớn Quản', 'Huyện Lộc Ninh', 'Huyện Phước Long', 'Huyện Đồng Phú', 'Huyện Tuy Đức'],
+            'BT1': ['Thành phố Phan Thiết', 'Huyện Bắc Bình', 'Huyện Đức Linh', 'Huyện Hàm Tân', 'Huyện Hàm Thuận Bắc', 'Huyện Hàm Thuận Nam', 'Huyện Tuy Phong'],
+            'CM': ['Thành phố Cà Mau', 'Huyện Cái Nước', 'Huyện Đầm Dơi', 'Huyện Năm Căn', 'Huyện Ngọc Hiển', 'Huyện Phú Tân', 'Huyện Thới Bình', 'Huyện Trần Văn Thời', 'Huyện U Minh'],
+            'CT': ['Thành phố Cần Thơ', 'Huyện Cờ Đỏ', 'Huyện Phong Điền', 'Huyện Thới Lai', 'Huyện Vĩnh Thạnh', 'Huyện Bình Thủy', 'Huyện Ninh Kiều', 'Huyện Ô Môn', 'Huyện Thốt Nốt'],
+            'CB': ['Thành phố Cao Bằng', 'Huyện Bảo Lạc', 'Huyện Bảo Lâm', 'Huyện Hòa An', 'Huyện Nguyên Bình', 'Huyện Quảng Uyên', 'Huyện Thạch An', 'Huyện Trùng Khánh', 'Huyện Hạ Lang'],
+            'DN': ['Thành phố Đà Nẵng', 'Huyện Hòa Vang', 'Huyện Hoàng Sa'],
+            'DL': ['Thành phố Đà Lạt', 'Huyện Bảo Lộc', 'Huyện Di Linh', 'Huyện Đơn Dương', 'Huyện Đức Trọng', 'Huyện Lạc Dương', 'Huyện Lạc Sơn', 'Huyện Đạ Huoai', 'Huyện Đạ Tẻh', 'Huyện Đam Rông'],
+            'DN1': ['Huyện Cư Jút', 'Huyện Cư M’gar', 'Huyện Ea Kar', 'Huyện Ea Súp', 'Huyện Krông Ana', 'Huyện Krông Bông', 'Huyện Krông Buk', 'Huyện Krông Pắk', 'Huyện Krông Nô', 'Huyện M’Drắk', 'Huyện Buôn Đôn'],
+            'DB': ['Thành phố Điện Biên Phủ', 'Huyện Điện Biên', 'Huyện Mường Ảng', 'Huyện Mường Chà', 'Huyện Mường Nhé', 'Huyện Mường Lay', 'Huyện Tủa Chùa', 'Huyện Tuần Giáo', 'Huyện Nậm Pồ'],
+            'DN2': ['Thành phố Biên Hòa', 'Huyện Cẩm Mỹ', 'Huyện Định Quán', 'Huyện Long Thành', 'Huyện Nhơn Trạch', 'Huyện Tân Phú', 'Huyện Vĩnh Cửu', 'Huyện Xuân Lộc', 'Huyện Trảng Bom'],
+            'DT': ['Thành phố Cao Lãnh', 'Thành phố Sa Đéc', 'Huyện Châu Thành', 'Huyện Cao Lãnh', 'Huyện Hồng Ngự', 'Huyện Lấp Vò', 'Huyện Lai Vung', 'Huyện Tam Nông', 'Huyện Tân Hồng', 'Huyện Tân Hưng', 'Huyện Tân Thạnh'],
+            'GL': ['Thành phố Pleiku', 'Huyện An Khê', 'Huyện Đắk Đoa', 'Huyện Đắk Pơ', 'Huyện Chư Păh', 'Huyện Chư Prông', 'Huyện Chư Sê', 'Huyện Chư Ty', 'Huyện Đức Cơ', 'Huyện Ia Grai', 'Huyện Ia Pa', 'Huyện Krông Pa', 'Huyện Krông Buk', 'Huyện Kông Chro'],
+            'HG': ['Thành phố Hà Giang', 'Huyện Bắc Mê', 'Huyện Bắc Quang', 'Huyện Đồng Văn', 'Huyện Hoàng Su Phì', 'Huyện Mèo Vạc', 'Huyện Quản Bạ', 'Huyện Vị Xuyên', 'Huyện Xín Mần', 'Huyện Yên Minh'],
+            'HT': ['Thành phố Hà Tĩnh', 'Huyện Cẩm Xuyên', 'Huyện Đức Thọ', 'Huyện Hương Khê', 'Huyện Hương Sơn', 'Huyện Kỳ Anh', 'Huyện Lộc Hà', 'Huyện Nghi Xuân', 'Huyện Thạch Hà', 'Huyện Vũ Quang'],
+            'HP': ['Thành phố Hải Phòng', 'Huyện An Dương', 'Huyện An Lão', 'Huyện Bạch Long Vĩ', 'Huyện Cát Hải', 'Huyện Cát Bà', 'Huyện Kiến An', 'Huyện Hải An', 'Huyện Hồng Bàng', 'Huyện Lê Chân', 'Huyện Ngô Quyền', 'Huyện Đồ Sơn', 'Huyện Dương Kinh'],
+            'HT1': ['Thành phố Huế', 'Huyện A Lưới', 'Huyện Hương Thủy', 'Huyện Hương Trà', 'Huyện Phong Điền', 'Huyện Quảng Điền', 'Huyện Phú Lộc', 'Huyện Phú Vang'],
+            'LA': ['Thành phố Lai Châu', 'Huyện Mường Tè', 'Huyện Mường Lay', 'Huyện Tam Đường', 'Huyện Tân Uyên', 'Huyện Sìn Hồ', 'Huyện Nậm Nhùn'],
+            'LD': ['Thành phố Lạng Sơn', 'Huyện Bắc Sơn', 'Huyện Bình Gia', 'Huyện Cao Lộc', 'Huyện Chi Lăng', 'Huyện Đình Lập', 'Huyện Hữu Lũng', 'Huyện Lộc Bình', 'Huyện Văn Lãng', 'Huyện Văn Quan'],
+            'LN': ['Thành phố Long Khánh', 'Huyện Cẩm Mỹ', 'Huyện Định Quán', 'Huyện Long Thành', 'Huyện Nhơn Trạch', 'Huyện Tân Phú', 'Huyện Vĩnh Cửu', 'Huyện Xuân Lộc', 'Huyện Trảng Bom'],
+            'LC': ['Thành phố Lào Cai', 'Huyện Bát Xát', 'Huyện Bắc Hà', 'Huyện Mường Khương', 'Huyện Sa Pa', 'Huyện Si Ma Cai', 'Huyện Văn Bàn'],
+            'NM': ['Thành phố Nha Trang', 'Huyện Cam Lâm', 'Huyện Diên Khánh', 'Huyện Khánh Vĩnh', 'Huyện Khánh Sơn', 'Huyện Ninh Hòa', 'Huyện Vạn Ninh'],
+            'PT': ['Thành phố Phú Quốc', 'Huyện An Minh', 'Huyện An Biên', 'Huyện Châu Thành', 'Huyện Giang Thành', 'Huyện Kiên Lương', 'Huyện Hòn Đất', 'Huyện Tân Hiệp'],
+            'QT': ['Thành phố Quy Nhơn', 'Huyện An Lão', 'Huyện An Nhơn', 'Huyện Hoài Ân', 'Huyện Hoài Nhơn', 'Huyện Phù Cát', 'Huyện Phù Mỹ', 'Huyện Tuy Phước', 'Huyện Vân Canh', 'Huyện Vân Phong'],
+            'QT1': ['Thành phố Quảng Ngãi', 'Huyện Bình Sơn', 'Huyện Đức Phổ', 'Huyện Minh Long', 'Huyện Mộ Đức', 'Huyện Nghĩa Hành', 'Huyện Tư Nghĩa', 'Huyện Sơn Tịnh', 'Huyện Sơn Hà', 'Huyện Sơn Tây'],
+            'QT2': ['Thành phố Quảng Nam', 'Huyện Đại Lộc', 'Huyện Duy Xuyên', 'Huyện Đông Giang', 'Huyện Hiệp Đức', 'Huyện Nam Giang', 'Huyện Nam Trà My', 'Huyện Núi Thành', 'Huyện Phú Ninh', 'Huyện Quế Sơn', 'Huyện Thăng Bình'],
+            'QN': ['Thành phố Quảng Ninh', 'Huyện Cô Tô', 'Huyện Đầm Hà', 'Huyện Hải Hà', 'Huyện Hoành Bồ', 'Huyện Móng Cái', 'Huyện Tiên Yên', 'Huyện Uông Bí', 'Huyện Vân Đồn', 'Huyện Đông Triều'],
+            'TA': ['Thành phố Tam Kỳ', 'Huyện Đại Lộc', 'Huyện Duy Xuyên', 'Huyện Đông Giang', 'Huyện Hiệp Đức', 'Huyện Nam Giang', 'Huyện Nam Trà My', 'Huyện Núi Thành', 'Huyện Phú Ninh', 'Huyện Quế Sơn', 'Huyện Thăng Bình'],
+            'TB': ['Thành phố Thái Bình', 'Huyện Đông Hưng', 'Huyện Hưng Hà', 'Huyện Kiến Xương', 'Huyện Quỳnh Phụ', 'Huyện Thái Thụy', 'Huyện Tiền Hải', 'Huyện Vũ Thư'],
+            'TB1': ['Thành phố Thái Nguyên', 'Huyện Đồng Hỷ', 'Huyện Định Hóa', 'Huyện Phú Lương', 'Huyện Võ Nhai', 'Huyện Đại Từ', 'Huyện Phú Bình', 'Huyện Phú Lương', 'Huyện Phú Lương', 'Huyện Sông Công', 'Huyện Sông Công'],
+            'TC': ['Thành phố Tuyên Quang', 'Huyện Chiêm Hóa', 'Huyện Hàm Yên', 'Huyện Lâm Bình', 'Huyện Na Hang', 'Huyện Sơn Dương', 'Huyện Yên Sơn'],
+            'TP': ['Thành phố Thanh Hóa', 'Huyện Bá Thước', 'Huyện Cẩm Thủy', 'Huyện Đông Sơn', 'Huyện Hà Trung', 'Huyện Hậu Lộc', 'Huyện Hoằng Hóa', 'Huyện Lang Chánh', 'Huyện Mường Lát', 'Huyện Ngọc Lặc', 'Huyện Ngọc Sơn', 'Huyện Nông Cống', 'Huyện Quan Sơn', 'Huyện Quan Hóa', 'Huyện Thạch Thành', 'Huyện Thọ Xuân', 'Huyện Thường Xuân', 'Huyện Triệu Sơn', 'Huyện Vĩnh Lộc', 'Huyện Yên Định'],
+            'TP1': ['Thành phố Thành phố Hồ Chí Minh', 'Huyện Bình Chánh', 'Huyện Cần Giờ', 'Huyện Củ Chi', 'Huyện Hóc Môn', 'Huyện Nhà Bè', 'Huyện Thủ Đức'],
+            'TD': ['Thành phố Thủ Dầu Một', 'Huyện Bến Cát', 'Huyện Dầu Tiếng', 'Huyện Phú Giáo', 'Huyện Tân Uyên', 'Huyện Bàu Bàng', 'Huyện Bắc Tân Uyên'],
+            'TT': ['Thành phố Tây Ninh', 'Huyện Bến Cầu', 'Huyện Bến Thành', 'Huyện Dương Minh Châu', 'Huyện Gò Dầu', 'Huyện Hoà Thành', 'Huyện Tân Biên', 'Huyện Tân Châu'],
+            'TQ': ['Thành phố Tuy Hòa', 'Huyện Đông Hòa', 'Huyện Phú Hòa', 'Huyện Sơn Hòa', 'Huyện Sông Cầu', 'Huyện Tây Hòa', 'Huyện Tuy An'],
+            'TN': ['Thành phố Tuyên Quang', 'Huyện Chiêm Hóa', 'Huyện Hàm Yên', 'Huyện Lâm Bình', 'Huyện Na Hang', 'Huyện Sơn Dương', 'Huyện Yên Sơn'],
+            'TV': ['Thành phố Trà Vinh', 'Huyện Càng Long', 'Huyện Cầu Kè', 'Huyện Cầu Ngang', 'Huyện Duyên Hải', 'Huyện Châu Thành', 'Huyện Tiểu Cần', 'Huyện Trà Cú', 'Huyện Trà Vinh'],
+            'TV1': ['Thành phố Tuyên Quang', 'Huyện Chiêm Hóa', 'Huyện Hàm Yên', 'Huyện Lâm Bình', 'Huyện Na Hang', 'Huyện Sơn Dương', 'Huyện Yên Sơn'],
+            'TV2': ['Thành phố Trà Vinh', 'Huyện Càng Long', 'Huyện Cầu Kè', 'Huyện Cầu Ngang', 'Huyện Duyên Hải', 'Huyện Châu Thành', 'Huyện Tiểu Cần', 'Huyện Trà Cú', 'Huyện Trà Vinh'],
+            'TV3': ['Thành phố Tuyên Quang', 'Huyện Chiêm Hóa', 'Huyện Hàm Yên', 'Huyện Lâm Bình', 'Huyện Na Hang', 'Huyện Sơn Dương', 'Huyện Yên Sơn'],
+            'YT': ['Thành phố Yên Bái', 'Huyện Anh Sơn', 'Huyện Lục Yên', 'Huyện Mù Cang Chải', 'Huyện Trạm Tấu', 'Huyện Văn Chấn', 'Huyện Văn Yên', 'Huyện Yên Bình'],
+            'YT1': ['Thành phố Yên Bái', 'Huyện Anh Sơn', 'Huyện Lục Yên', 'Huyện Mù Cang Chải', 'Huyện Trạm Tấu', 'Huyện Văn Chấn', 'Huyện Văn Yên', 'Huyện Yên Bình'],
+            'YT2': ['Thành phố Yên Bái', 'Huyện Anh Sơn', 'Huyện Lục Yên', 'Huyện Mù Cang Chải', 'Huyện Trạm Tấu', 'Huyện Văn Chấn', 'Huyện Văn Yên', 'Huyện Yên Bình'],
+        };
+
+        const wards = {
+            'Quận 1': [
+                'Phường Bến Nghé', 'Phường Bến Thành', 'Phường Cầu Ông Lãnh', 'Phường Cô Giang',
+                'Phường Đa Kao', 'Phường Nguyễn Cư Trinh', 'Phường Nguyễn Thái Bình', 'Phường Nguyễn Huệ',
+                'Phường Tân Định'
+            ],
+            'Quận 2': [
+                'Phường An Khánh', 'Phường An Lợi Đông', 'Phường An Phú', 'Phường Bình An', 'Phường Bình Khánh',
+                'Phường Cát Lái', 'Phường Thảo Điền', 'Phường Thạnh Mỹ Lợi', 'Phường Thủ Thiêm'
+            ],
+            'Quận 3': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 4': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 5': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 6': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 7': [
+                'Phường Tân Phong', 'Phường Tân Hưng', 'Phường Tân Kiểng', 'Phường Tân Quy', 'Phường Phú Mỹ',
+                'Phường Bình Thuận', 'Phường Hưng Gia', 'Phường Hưng Phước', 'Phường Tân Thuận Tây',
+                'Phường Tân Thuận Đông'
+            ],
+            'Quận 8': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 9': [
+                'Phường Hiệp Phú', 'Phường Long Bình', 'Phường Long Thạnh Mỹ', 'Phường Tân Phú',
+                'Phường Tân Sơn Nhì', 'Phường Phước Bình', 'Phường Phước Long A', 'Phường Phước Long B'
+            ],
+            'Quận 10': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 11': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận 12': [
+                'Phường An Phú Đông', 'Phường Đông Hưng Thuận', 'Phường Đông Ngạc', 'Phường Hiệp Thành',
+                'Phường Tân Chánh Hiệp', 'Phường Tân Thới Hiệp', 'Phường Tân Thới Hòa', 'Phường Thạnh Lộc',
+                'Phường Thạnh Xuân'
+            ],
+            'Quận Bình Tân': [
+                'Phường Bình Hưng Hòa', 'Phường Bình Hưng Hòa A', 'Phường Bình Hưng Hòa B', 'Phường Bình Trị Đông',
+                'Phường Bình Trị Đông A', 'Phường Bình Trị Đông B', 'Phường Tân Tạo', 'Phường Tân Tạo A',
+                'Phường Tân Tạo B', 'Phường Tân Quý', 'Phường Tân Sơn Nhì'
+            ],
+            'Quận Bình Thạnh': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9', 'Phường 10', 'Phường 11', 'Phường 12'
+            ],
+            'Quận Gò Vấp': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận Phú Nhuận': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 7', 'Phường 8',
+                'Phường 9'
+            ],
+            'Quận Tân Bình': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9', 'Phường 10', 'Phường 11'
+            ],
+            'Quận Tân Phú': [
+                'Phường 1', 'Phường 2', 'Phường 3', 'Phường 4', 'Phường 5', 'Phường 6', 'Phường 7',
+                'Phường 8', 'Phường 9'
+            ],
+            'Quận Thủ Đức': [
+                'Phường Bình Chiểu', 'Phường Bình Thọ', 'Phường Hiệp Bình Chánh', 'Phường Hiệp Bình Phước',
+                'Phường Linh Chiểu', 'Phường Linh Đông', 'Phường Linh Trung', 'Phường Tam Bình',
+                'Phường Tam Phú', 'Phường Tân Phú'
+            ],
+            'Huyện Bình Chánh': [
+                'Xã Bình Chánh', 'Xã Bình Hưng', 'Xã Bình Lợi', 'Xã Bình Tân', 'Xã Đa Phước', 'Xã Hưng Long',
+                'Xã Phong Phú', 'Xã Tân Kiên', 'Xã Tân Nhựt', 'Xã Tân Tạo', 'Xã Vĩnh Lộc A', 'Xã Vĩnh Lộc B'
+            ],
+            'Huyện Cần Giờ': [
+                'Xã Bình Khánh', 'Xã Cần Thạnh', 'Xã Cần Giờ', 'Xã Long Hòa', 'Xã Tam Thôn Hiệp', 'Xã Thạnh An',
+                'Xã Vàm Sat'
+            ],
+            'Huyện Củ Chi': [
+                'Xã An Nhơn Tây', 'Xã An Phú', 'Xã Bình Mỹ', 'Xã Bình Phú', 'Xã Hưng Thạnh', 'Xã Phú Hòa',
+                'Xã Phú Mỹ Hưng', 'Xã Tân An Hội', 'Xã Tân Phú', 'Xã Tân Thạnh Đông', 'Xã Tân Thạnh Tây',
+                'Xã Tân Thông Hội', 'Xã Tân Hưng', 'Xã Tân Hiệp'
+            ],
+            'Huyện Hóc Môn': [
+                'Xã Bà Điểm', 'Xã Bàu Cò', 'Xã Đông Thạnh', 'Xã Hưng Long', 'Xã Nhị Bình', 'Xã Tân Hiệp',
+                'Xã Tân Thạnh', 'Xã Tân Thới Nhì', 'Xã Tân Thới Hiệp', 'Xã Xuân Thới Đông', 'Xã Xuân Thới Sơn'
+            ],
+            'Huyện Nhà Bè': [
+                'Xã Hiệp Phước', 'Xã Nhơn Đức', 'Xã Phú Xuân', 'Xã Tân Thuận Đông', 'Xã Tân Thuận Tây',
+                'Xã Tân Khánh', 'Xã Tân Quý Tây', 'Xã Tân Tạo'
+            ],
+            // Hà Nội
+            'Ba Đình': ['Phường Ngọc Khánh', 'Phường Cống Vị', 'Phường Kim Mã', 'Phường Đội Cấn', 'Phường Liễu Giai', 'Phường Vĩnh Phúc', 'Phường Phúc Xá', 'Phường Gia Vượng', 'Phường Thành Công', 'Phường Trúc Bạch'],
+            'Hoàn Kiếm': ['Phường Hàng Bạc', 'Phường Hàng Bài', 'Phường Hàng Buồm', 'Phường Hàng Đào', 'Phường Hàng Gai', 'Phường Hàng Mã', 'Phường Hàng Tre', 'Phường Lý Thái Tổ', 'Phường Phúc Tân', 'Phường Tràng Tiền'],
+            'Tây Hồ': ['Phường Bưởi', 'Phường Nhật Tân', 'Phường Phú Thượng', 'Phường Quảng An', 'Phường Thụy Khuê', 'Phường Tây Hồ', 'Phường Xuân La', 'Phường Yên Phụ'],
+            'Long Biên': ['Phường Bồ Đề', 'Phường Cầu Diễn', 'Phường Gia Thụy', 'Phường Long Biên', 'Phường Ngọc Thụy', 'Phường Phúc Lợi', 'Phường Sài Đồng', 'Phường Thạch Bàn', 'Phường Thạch Cầu'],
+            'Cầu Giấy': ['Phường Dịch Vọng', 'Phường Dịch Vọng Hậu', 'Phường Mai Dịch', 'Phường Nghĩa Tân', 'Phường Nghĩa Đô', 'Phường Quan Hoa', 'Phường Yên Hòa'],
+            'Đống Đa': ['Phường Cát Linh', 'Phường Kim Liên', 'Phường Khâm Thiên', 'Phường Láng Hạ', 'Phường Láng Thượng', 'Phường Nam Đồng', 'Phường Phương Liên', 'Phường Phương Mai', 'Phường Trung Liệt', 'Phường Trung Tự'],
+            'Hai Bà Trưng': ['Phường Bách Khoa', 'Phường Cầu Dền', 'Phường Đồng Tâm', 'Phường Đống Mác', 'Phường Giáp Bát', 'Phường Hai Bà Trưng', 'Phường Minh Khai', 'Phường Quỳnh Mai', 'Phường Thanh Lương', 'Phường Thanh Nhàn'],
+            'Hoàng Mai': ['Phường Đại Kim', 'Phường Giáp Bát', 'Phường Hoàng Liệt', 'Phường Hoàng Mai', 'Phường Lĩnh Nam', 'Phường Mai Động', 'Phường Tân Mai', 'Phường Thịnh Liệt', 'Phường Vĩnh Hưng'],
+            'Thanh Xuân': ['Phường Hạ Đình', 'Phường Khương Đình', 'Phường Khương Mai', 'Phường Khương Trung', 'Phường Nam Trung Yên', 'Phường Nhân Chính', 'Phường Phương Liệt', 'Phường Thanh Xuân Bắc', 'Phường Thanh Xuân Nam'],
+            'Sóc Sơn': ['Xã Bắc Sơn', 'Xã Đức Hoà', 'Xã Đông Xuân', 'Xã Hồng Kỳ', 'Xã Minh Trí', 'Xã Quang Tiến', 'Xã Tân Minh', 'Xã Tân Hưng', 'Xã Tiến Thắng', 'Xã Xuân Giang'],
+            'Đông Anh': ['Xã Bắc Hồng', 'Xã Cao Lỗ', 'Xã Cổ Loa', 'Xã Đông Hội', 'Xã Kim Chung', 'Xã Nam Hồng', 'Xã Nguyên Khê', 'Xã Tàm Xá', 'Xã Thụy Lâm', 'Xã Vân Hà', 'Xã Vân Nội', 'Xã Vân Từ'],
+            'Gia Lâm': ['Xã Đa Tốn', 'Xã Dương Quang', 'Xã Dương Xá', 'Xã Giang Biên', 'Xã Kim Sơn', 'Xã Lệ Chi', 'Xã Long Biên', 'Xã Phú Thị', 'Xã Quang Trung', 'Xã Tàm Xá'],
+            'Nam Từ Liêm': ['Phường Cầu Diễn', 'Phường Đại Mỗ', 'Phường Mễ Trì', 'Phường Mỹ Đình 1', 'Phường Mỹ Đình 2', 'Phường Phú Đô', 'Phường Phú Mỵ', 'Phường Phú Liên', 'Phường Tây Mỗ'],
+            'Thanh Trì': ['Xã Đại Áng', 'Xã Đại Mỗ', 'Xã Đông Mỹ', 'Xã Hữu Hòa', 'Xã Linh Đàm', 'Xã Ngọc Hồi', 'Xã Tam Hiệp', 'Xã Tân Triều', 'Xã Tứ Hiệp'],
+            'Bắc Từ Liêm': ['Phường Cổ Nhuế 1', 'Phường Cổ Nhuế 2', 'Phường Đông Ngạc', 'Phường Minh Khai', 'Phường Phú Diễn', 'Phường Phúc Diễn', 'Phường Thụy Phương', 'Phường Tây Tựu', 'Phường Xuân Đỉnh'],
+            'Mê Linh': ['Xã Đại Thịnh', 'Xã Hương Sơn', 'Xã Mê Linh', 'Xã Tiền Phong', 'Xã Vạn Xuân', 'Xã Vĩnh Phúc'],
+            'Hà Đông': ['Phường Biên Giang', 'Phường Chí Đạo', 'Phường Đồng Mai', 'Phường Hà Cầu', 'Phường Mỗ Lao', 'Phường Nghĩa Đô', 'Phường Phú La', 'Phường Phú Lương', 'Phường Quang Trung', 'Phường Xuân Mai'],
+            'Sơn Tây': ['Phường Trung Hưng', 'Phường Trung Nghĩa', 'Phường Xuân Khanh'],
+            'Ba Vì': ['Xã Ba Trại', 'Xã Bình Yên', 'Xã Cam Thượng', 'Xã Đá Chông', 'Xã Đồng Thái', 'Xã Khánh Thượng', 'Xã Minh Quang', 'Xã Phú Cường', 'Xã Tản Hồng', 'Xã Tản Lĩnh', 'Xã Tản Viên'],
+            'Phúc Thọ': ['Xã Cẩm Đình', 'Xã Cẩm Xuân', 'Xã Hát Môn', 'Xã Hồng Hà', 'Xã Ngọc Tảo', 'Xã Phúc Thọ', 'Xã Tam Hiệp'],
+            'Đan Phượng': ['Xã Đan Phượng', 'Xã Hồng Hà', 'Xã Liên Hà', 'Xã Liên Hồng', 'Xã Liên Trung', 'Xã Tân Hội', 'Xã Tân Lập', 'Xã Tân Phong', 'Xã Thọ An'],
+            'Hoài Đức': ['Xã An Khánh', 'Xã An Thượng', 'Xã Bác Cổ', 'Xã Cát Quế', 'Xã Đức Thượng', 'Xã Dương Liễu', 'Xã Kim Chung', 'Xã Lệ Chi', 'Xã Phú Cát', 'Xã Song Phượng'],
+            'Quốc Oai': ['Xã Cấn Hữu', 'Xã Đồng Quang', 'Xã Đại Thành', 'Xã Hòa Thạch', 'Xã Hương Ngải', 'Xã Liệp Tuyết', 'Xã Nghĩa Hương', 'Xã Sài Sơn', 'Xã Yên Sơn'],
+            'Thạch Thất': ['Xã Bình Yên', 'Xã Cần Kiệm', 'Xã Cẩm Hưng', 'Xã Đồng Trúc', 'Xã Hương Ngải', 'Xã Hương Sơn', 'Xã Kim Sơn', 'Xã Liên Hồng', 'Xã Phú Cát'],
+            'Chương Mỹ': ['Xã Chúc Sơn', 'Xã Đại Yên', 'Xã Hòa Chính', 'Xã Hòa Sơn', 'Xã Hợp Thanh', 'Xã Kim Bài', 'Xã Mộc Hoá', 'Xã Phú Cát', 'Xã Tân Tiến', 'Xã Thanh Bình'],
+            'Thanh Oai': ['Xã Cự Khê', 'Xã Đỗ Xá', 'Xã Hòa Xá', 'Xã Hương Sơn', 'Xã Kim Bài', 'Xã Liên Châu', 'Xã Mỹ Đình', 'Xã Tam Hưng', 'Xã Thanh Thùy'],
+            'Thường Tín': ['Xã Bình Minh', 'Xã Dũng Tiến', 'Xã Hương Canh', 'Xã Hưng Long', 'Xã Kỳ Đô', 'Xã Mễ Sở', 'Xã Ninh Sở', 'Xã Thường Tín', 'Xã Tô Hiệu'],
+            'Phú Xuyên': ['Xã Bạch Sam', 'Xã Châu Can', 'Xã Đình Xuyên', 'Xã Hương Sơn', 'Xã Ninh Hiệp', 'Xã Phú Xuyên', 'Xã Quang Trung', 'Xã Tân Xuân', 'Xã Thanh Sơn'],
+            'Ứng Hòa': ['Xã Bình Định', 'Xã Cao Dương', 'Xã Cự Khê', 'Xã Đoàn Hùng', 'Xã Đoàn Tùng', 'Xã Hòa Chính', 'Xã Hòa Thạch', 'Xã Hương Ngải', 'Xã Mỹ Thành'],
+            'Mỹ Đức': ['Xã An Mỹ', 'Xã An Thượng', 'Xã Hương Sơn', 'Xã Hưng Thịnh', 'Xã Kim Bài', 'Xã Mộc Hoá', 'Xã Phú Cát', 'Xã Thượng Mỗ', 'Xã Trung Hưng']
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const provinceSelect = document.getElementById('province');
+            const districtSelect = document.getElementById('district');
+            const wardSelect = document.getElementById('ward');
+
+            provinceSelect.addEventListener('change', function () {
+                const selectedProvince = this.value;
+                let districtsOptions = '<option value="">Vui lòng chọn</option>';
+                if (selectedProvince) {
+                    districts[selectedProvince].forEach(district => {
+                        districtsOptions += `<option value="${district}">${district}</option>`;
+                    });
+                }
+                districtSelect.innerHTML = districtsOptions;
+                wardSelect.innerHTML = '<option value="">Vui lòng chọn</option>';
+            });
+
+            districtSelect.addEventListener('change', function () {
+                const selectedDistrict = this.value;
+                let wardsOptions = '<option value="">Vui lòng chọn</option>';
+                if (selectedDistrict && wards[selectedDistrict]) {
+                    wards[selectedDistrict].forEach(ward => {
+                        wardsOptions += `<option value="${ward}">${ward}</option>`;
+                    });
+                }
+                wardSelect.innerHTML = wardsOptions;
+            });
+        });
+    </script>
+</body>
+
+
