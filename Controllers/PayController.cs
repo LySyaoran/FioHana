@@ -41,6 +41,11 @@ namespace Do_An.Controllers
             ViewBag.TotalAmount = totalAmount;
             ViewBag.Count = count;
 
+            decimal shippingFee = 32000m;
+            ViewBag.ShippingFee = shippingFee;
+
+            ViewBag.FinalAmount = totalAmount + shippingFee;
+
             return View(selectedItems);
         }
 
@@ -82,13 +87,13 @@ namespace Do_An.Controllers
                     discountAmount = decimal.Parse(promotion.value_promotions);
                 }
 
-                decimal ShippingFee = 32000m;
+                decimal shippingFee = 32000m;
+                ViewBag.ShippingFee = shippingFee;
 
                 ViewBag.TotalAmount = totalAmount;
-                ViewBag.FinalAmount = totalAmount - discountAmount;
+                ViewBag.FinalAmount = totalAmount - discountAmount + shippingFee;
                 ViewBag.DiscountAmount = discountAmount;
                 ViewBag.PromotionCode = promoCode;
-                ViewBag.ShippingFee = 32000m;
 
                 return View("Pay", selectedItems);
             }

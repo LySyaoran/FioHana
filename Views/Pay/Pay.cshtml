@@ -56,7 +56,7 @@
                                 <h6 class="my-0">Phí vận chuyển</h6>
                                 <small class="text-muted">Đơn vị vận chuyển: ViettelPost</small>
                             </div>
-                            <span class="text-muted">@ViewBag.ShippingFee</span>
+                            <span class="text-muted">@ViewBag.ShippingFee.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) đ</span>
                         </li>
                         @if (ViewBag.PromotionCode != null)
                         {
@@ -70,7 +70,7 @@
                         }
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Thành tiền</span>
-                            <strong>130.000đ</strong>
+                            <strong>@ViewBag.FinalAmount.ToString("N0", System.Globalization.CultureInfo.GetCultureInfo("vi-VN")) đ</strong>
                         </li>
                     </ul>
 
@@ -119,7 +119,7 @@
 
                             <div class="col-md-4">
                                 <label for="province" class="form-label">Tỉnh/Thành phố</label>
-                                <select class="form-select" id="province" required>
+                                <select class="form-select" id="city" required>
                                     <option value="">Vui lòng chọn</option>
                                     <option value="HCM">TP. Hồ Chí Minh</option>
                                     <option value="HN">Hà Nội</option>
@@ -479,7 +479,7 @@
         };
 
         document.addEventListener('DOMContentLoaded', function () {
-            const provinceSelect = document.getElementById('province');
+            const provinceSelect = document.getElementById('city');
             const districtSelect = document.getElementById('district');
             const wardSelect = document.getElementById('ward');
 
@@ -506,5 +506,40 @@
                 wardSelect.innerHTML = wardsOptions;
             });
         });
+
+
+
+
+        function saveInputValues() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const address = document.getElementById("address").value;
+
+            localStorage.setItem("firstName", firstName);
+            localStorage.setItem("lastName", lastName);
+            localStorage.setItem("email", email);
+            localStorage.setItem("address", address);
+        }
+        document.getElementById("firstName").addEventListener("input", saveInputValues);
+        document.getElementById("lastName").addEventListener("input", saveInputValues);
+        document.getElementById("email").addEventListener("input", saveInputValues);
+        document.getElementById("address").addEventListener("input", saveInputValues);
+
+        function loadInputValues() {
+            if (localStorage.getItem("firstName")) {
+                document.getElementById("firstName").value = localStorage.getItem("firstName");
+            }
+            if (localStorage.getItem("lastName")) {
+                document.getElementById("lastName").value = localStorage.getItem("lastName");
+            }
+            if (localStorage.getItem("email")) {
+                document.getElementById("email").value = localStorage.getItem("email");
+            }
+            if (localStorage.getItem("address")) {
+                document.getElementById("address").value = localStorage.getItem("address");
+            }
+        }
+        window.onload = loadInputValues;
     </script>
 </body>
