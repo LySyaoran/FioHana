@@ -46,30 +46,29 @@
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong>@Model.Product.mau_sac</strong></p>
                             </li>
-                        </ul>
-
-                        <ul class="list-inline">
+                            <br />
                             <li class="list-inline-item">
                                 <h6>Dịp phù hợp</h6>
                             </li>
                             <li class="list-inline-item">
                                 <p class="text-muted"><strong>@Model.Occasion</strong></p>
                             </li>
+                            <br />
+                            <li class="list-inline-item">
+                                <h6>Số lượng: </h6>
+                            </li>
+                            <li class="list-inline-item"><span class="btn btn-success" id="btn-minus">-</span></li>
+                            <li class="list-inline-item"><span class="badge bg-secondary" id="var-value">1</span></li>
+                            <li class="list-inline-item"><span class="btn btn-success" id="btn-plus">+</span></li>
                         </ul>
-
                         <div class="row pb-3">
                             <div class="col d-grid">
-                                <form action="@Url.Action("AddToCart", "ShoppingCart")" method="post">
-                                    <input type="hidden" name="product_id" value="@Model.Product.id" />
-                                    <input type="number" name="soLuong" value="1" min="1" />
-                                    <button type="submit" class="btn btn-success btn-lg">Add to Cart</button>
-                                </form>
+                                <a href="#" class="btn btn-success btn-lg" name="submit" value="buy">Buy</a>
                             </div>
                             <div class="col d-grid">
-                                <button type="button" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
+                                <button id="addToCartBtn" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -128,3 +127,40 @@
     </div>
 </section>
 <!-- End Article -->
+
+
+<script>
+    document.getElementById('addToCartBtn').addEventListener('click', function () {
+        var userId = '@Session["UserId"]'; // Lấy ID của user đang đăng nhập
+        if (!userId || userId === 'null') {
+            // Nếu user chưa đăng nhập, chuyển hướng đến trang đăng nhập
+            window.location.href = '@Url.Action("Login", "Login")';
+            return;
+        }
+        var productId = '@Model.Product.id'; // Lấy ID của sản phẩm hiện tại
+        var quantity = parseInt(document.getElementById('var-value').innerText); // Lấy số lượng sản phẩm
+
+        $.ajax({
+            url: '@Url.Action("AddToCart", "ShoppingCart")',
+            type: 'POST',
+            data: {
+                userId: userId,
+                productId: productId,
+                quantity: quantity
+            },
+            success: function (response) {
+                if (response.success)
+                {
+                    alert('Thêm vào giỏ hàng thành công.');
+                    window.location.href = '@Url.Action("Cart", "ShoppingCart")';
+                } else
+                {
+                    alert('Thêm vào giỏ hàng không thành công.');
+                }
+            },
+            error: function (error) {
+                alert('Thêm vào giỏ hàng không thành công.');
+            }
+        });
+    });
+</script>

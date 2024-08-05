@@ -39,12 +39,13 @@
     <Property Name="ngay_giao_hang" Type="DateTime" Precision="0" />
     <Property Name="tong_tien" Type="Decimal" Precision="10" Scale="2" />
     <Property Name="trang_thai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="phuong_thuc_thanh_toan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="hinh_thuc_giao_hang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="promotion_id" Type="Int32" />
     <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__don_h__6A30C649" FromRole="orders" ToRole="order_details" />
     <NavigationProperty Name="user" Relationship="Self.FK__orders__khach_ha__66603565" FromRole="orders" ToRole="users" />
     <NavigationProperty Name="promotion" Relationship="Self.FK__orders__promotio__6754599E" FromRole="orders" ToRole="promotions" />
+    <NavigationProperty Name="gifts" Relationship="nhom1ltwebModel.FK__gifts__order_id__160F4887" FromRole="order" ToRole="gift" />
+    <Property Name="phuong_thuc_thanh_toan1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="product">
     <Key>
@@ -65,6 +66,8 @@
     <NavigationProperty Name="flower_types" Relationship="Self.FK__products__loai_h__5629CD9C" FromRole="products" ToRole="flower_types" />
     <NavigationProperty Name="occasion" Relationship="Self.FK__products__dip_ph__571DF1D5" FromRole="products" ToRole="occasions" />
     <NavigationProperty Name="order_details" Relationship="Self.FK__order_det__san_p__6B24EA82" FromRole="products" ToRole="order_details" />
+    <NavigationProperty Name="carts" Relationship="nhom1ltwebModel.fk_cart_id_product" FromRole="product" ToRole="cart" />
+    <NavigationProperty Name="suppliers" Relationship="nhom1ltwebModel.FK__suppliers__san_p__1DB06A4F" FromRole="product" ToRole="supplier" />
   </EntityType>
   <EntityType Name="promotion">
     <Key>
@@ -76,6 +79,8 @@
     <Property Name="ngay_bat_dau" Type="DateTime" Precision="0" />
     <Property Name="ngay_ket_thuc" Type="DateTime" Precision="0" />
     <NavigationProperty Name="orders" Relationship="Self.FK__orders__promotio__6754599E" FromRole="promotions" ToRole="orders" />
+    <Property Name="code_promotions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="value_promotions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="user">
     <Key>
@@ -94,6 +99,8 @@
     <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="orders" Relationship="Self.FK__orders__khach_ha__66603565" FromRole="users" ToRole="orders" />
     <Property Name="img_user" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="carts" Relationship="nhom1ltwebModel.fk_cart_id_user" FromRole="user" ToRole="cart" />
+    <NavigationProperty Name="orders_payments" Relationship="nhom1ltwebModel.FK__orders_pa__user___208CD6FA" FromRole="user" ToRole="orders_payments" />
   </EntityType>
   <Association Name="FK__products__loai_h__5629CD9C">
     <End Role="flower_types" Type="Self.flower_types" Multiplicity="0..1" />
@@ -199,5 +206,147 @@
       <End Role="promotions" EntitySet="promotions" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
+    <EntitySet Name="carts" EntityType="nhom1ltwebModel.cart" />
+    <AssociationSet Name="fk_cart_id_product" Association="nhom1ltwebModel.fk_cart_id_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cart_id_user" Association="nhom1ltwebModel.fk_cart_id_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="cart" EntitySet="carts" />
+    </AssociationSet>
+    <EntitySet Name="gifts" EntityType="nhom1ltwebModel.gift" />
+    <EntitySet Name="orders_payments" EntityType="nhom1ltwebModel.orders_payments" />
+    <EntitySet Name="suppliers" EntityType="nhom1ltwebModel.supplier" />
+    <AssociationSet Name="FK__gifts__order_id__160F4887" Association="nhom1ltwebModel.FK__gifts__order_id__160F4887">
+      <End Role="order" EntitySet="orders" />
+      <End Role="gift" EntitySet="gifts" />
+    </AssociationSet>
+    <EntitySet Name="sysdiagrams" EntityType="nhom1ltwebModel.sysdiagram" />
+    <AssociationSet Name="FK__orders_pa__user___208CD6FA" Association="nhom1ltwebModel.FK__orders_pa__user___208CD6FA">
+      <End Role="user" EntitySet="users" />
+      <End Role="orders_payments" EntitySet="orders_payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suppliers__san_p__1DB06A4F" Association="nhom1ltwebModel.FK__suppliers__san_p__1DB06A4F">
+      <End Role="product" EntitySet="products" />
+      <End Role="supplier" EntitySet="suppliers" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id_user" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" />
+    <Property Name="id_product" Type="Int32" Nullable="false" />
+    <Property Name="soluong_sp" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="nhom1ltwebModel.fk_cart_id_product" FromRole="cart" ToRole="product" />
+    <NavigationProperty Name="user" Relationship="nhom1ltwebModel.fk_cart_id_user" FromRole="cart" ToRole="user" />
+  </EntityType>
+  <Association Name="fk_cart_id_product">
+    <End Type="nhom1ltwebModel.product" Role="product" Multiplicity="1" />
+    <End Type="nhom1ltwebModel.cart" Role="cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="id_product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cart_id_user">
+    <End Type="nhom1ltwebModel.user" Role="user" Multiplicity="1" />
+    <End Type="nhom1ltwebModel.cart" Role="cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="gift">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="order_id" Type="Int32" />
+    <Property Name="nguoi_nhan_ten" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="nguoi_nhan_sdt" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="nguoi_nhan_dia_chi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="loi_nhan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="order" Relationship="nhom1ltwebModel.FK__gifts__order_id__160F4887" FromRole="gift" ToRole="order" />
+  </EntityType>
+  <EntityType Name="orders_payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten_phuong_thuc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="mo_ta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="stk" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="user_id" Type="Int32" />
+    <NavigationProperty Name="user" Relationship="nhom1ltwebModel.FK__orders_pa__user___208CD6FA" FromRole="orders_payments" ToRole="user" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dia_chi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="so_dien_thoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ghi_chu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="san_pham_id" Type="Int32" />
+    <NavigationProperty Name="product" Relationship="nhom1ltwebModel.FK__suppliers__san_p__1DB06A4F" FromRole="supplier" ToRole="product" />
+  </EntityType>
+  <Association Name="FK__gifts__order_id__160F4887">
+    <End Type="nhom1ltwebModel.order" Role="order" Multiplicity="0..1" />
+    <End Type="nhom1ltwebModel.gift" Role="gift" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gift">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__orders_pa__user___208CD6FA">
+    <End Type="nhom1ltwebModel.user" Role="user" Multiplicity="0..1" />
+    <End Type="nhom1ltwebModel.orders_payments" Role="orders_payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders_payments">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__suppliers__san_p__1DB06A4F">
+    <End Type="nhom1ltwebModel.product" Role="product" Multiplicity="0..1" />
+    <End Type="nhom1ltwebModel.supplier" Role="supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="supplier">
+        <PropertyRef Name="san_pham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

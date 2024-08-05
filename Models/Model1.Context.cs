@@ -32,5 +32,10 @@ namespace Do_An.Models
         public virtual DbSet<product> products { get; set; }
         public virtual DbSet<promotion> promotions { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<cart> carts { get; set; }
+        public virtual DbSet<gift> gifts { get; set; }
+        public virtual DbSet<orders_payments> orders_payments { get; set; }
+        public virtual DbSet<supplier> suppliers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

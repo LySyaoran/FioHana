@@ -25,6 +25,8 @@ namespace Do_An.Models
         public string mo_ta { get; set; }
         public Nullable<System.DateTime> ngay_bat_dau { get; set; }
         public Nullable<System.DateTime> ngay_ket_thuc { get; set; }
+        public string code_promotions { get; set; }
+        public string value_promotions { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }

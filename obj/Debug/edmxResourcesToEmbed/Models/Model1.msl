@@ -32,13 +32,13 @@
     <EntitySetMapping Name="orders">
       <EntityTypeMapping TypeName="nhom1ltwebModel.order">
         <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="phuong_thuc_thanh_toan1" ColumnName="phuong_thuc_thanh_toan" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="khach_hang_id" ColumnName="khach_hang_id" />
           <ScalarProperty Name="ngay_dat_hang" ColumnName="ngay_dat_hang" />
           <ScalarProperty Name="ngay_giao_hang" ColumnName="ngay_giao_hang" />
           <ScalarProperty Name="tong_tien" ColumnName="tong_tien" />
           <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
-          <ScalarProperty Name="phuong_thuc_thanh_toan" ColumnName="phuong_thuc_thanh_toan" />
           <ScalarProperty Name="hinh_thuc_giao_hang" ColumnName="hinh_thuc_giao_hang" />
           <ScalarProperty Name="promotion_id" ColumnName="promotion_id" />
         </MappingFragment>
@@ -65,6 +65,8 @@
     <EntitySetMapping Name="promotions">
       <EntityTypeMapping TypeName="nhom1ltwebModel.promotion">
         <MappingFragment StoreEntitySet="promotions">
+          <ScalarProperty Name="value_promotions" ColumnName="value_promotions" />
+          <ScalarProperty Name="code_promotions" ColumnName="code_promotions" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="ten" ColumnName="ten" />
           <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
@@ -88,6 +90,62 @@
           <ScalarProperty Name="id_facebook" ColumnName="id_facebook" />
           <ScalarProperty Name="vai_tro" ColumnName="vai_tro" />
           <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carts">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.cart">
+        <MappingFragment StoreEntitySet="cart">
+          <ScalarProperty Name="soluong_sp" ColumnName="soluong_sp" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gifts">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.gift">
+        <MappingFragment StoreEntitySet="gifts">
+          <ScalarProperty Name="loi_nhan" ColumnName="loi_nhan" />
+          <ScalarProperty Name="nguoi_nhan_dia_chi" ColumnName="nguoi_nhan_dia_chi" />
+          <ScalarProperty Name="nguoi_nhan_sdt" ColumnName="nguoi_nhan_sdt" />
+          <ScalarProperty Name="nguoi_nhan_ten" ColumnName="nguoi_nhan_ten" />
+          <ScalarProperty Name="order_id" ColumnName="order_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders_payments">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.orders_payments">
+        <MappingFragment StoreEntitySet="orders_payments">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="stk" ColumnName="stk" />
+          <ScalarProperty Name="mo_ta" ColumnName="mo_ta" />
+          <ScalarProperty Name="ten_phuong_thuc" ColumnName="ten_phuong_thuc" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.supplier">
+        <MappingFragment StoreEntitySet="suppliers">
+          <ScalarProperty Name="san_pham_id" ColumnName="san_pham_id" />
+          <ScalarProperty Name="ghi_chu" ColumnName="ghi_chu" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="so_dien_thoai" ColumnName="so_dien_thoai" />
+          <ScalarProperty Name="dia_chi" ColumnName="dia_chi" />
+          <ScalarProperty Name="ten" ColumnName="ten" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="nhom1ltwebModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

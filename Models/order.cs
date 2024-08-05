@@ -18,6 +18,7 @@ namespace Do_An.Models
         public order()
         {
             this.order_details = new HashSet<order_details>();
+            this.gifts = new HashSet<gift>();
         }
     
         public int id { get; set; }
@@ -26,13 +27,15 @@ namespace Do_An.Models
         public Nullable<System.DateTime> ngay_giao_hang { get; set; }
         public Nullable<decimal> tong_tien { get; set; }
         public string trang_thai { get; set; }
-        public string phuong_thuc_thanh_toan { get; set; }
         public string hinh_thuc_giao_hang { get; set; }
         public Nullable<int> promotion_id { get; set; }
+        public string phuong_thuc_thanh_toan1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_details> order_details { get; set; }
         public virtual user user { get; set; }
         public virtual promotion promotion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<gift> gifts { get; set; }
     }
 }

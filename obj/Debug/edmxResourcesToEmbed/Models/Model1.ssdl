@@ -1,11 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="nhom1ltwebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="id_user" />
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_user" Type="int" Nullable="false" />
+    <Property Name="id_product" Type="int" Nullable="false" />
+    <Property Name="soluong_sp" Type="int" />
+  </EntityType>
   <EntityType Name="flower_types">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ten" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="gifts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="order_id" Type="int" />
+    <Property Name="nguoi_nhan_ten" Type="nvarchar" MaxLength="255" />
+    <Property Name="nguoi_nhan_sdt" Type="nvarchar" MaxLength="20" />
+    <Property Name="nguoi_nhan_dia_chi" Type="nvarchar" MaxLength="255" />
+    <Property Name="loi_nhan" Type="text" />
   </EntityType>
   <EntityType Name="occasions">
     <Key>
@@ -35,9 +55,19 @@
     <Property Name="ngay_giao_hang" Type="date" />
     <Property Name="tong_tien" Type="decimal" Precision="10" Scale="2" />
     <Property Name="trang_thai" Type="nvarchar" MaxLength="50" />
-    <Property Name="phuong_thuc_thanh_toan" Type="nvarchar" MaxLength="50" />
     <Property Name="hinh_thuc_giao_hang" Type="nvarchar" MaxLength="50" />
     <Property Name="promotion_id" Type="int" />
+    <Property Name="phuong_thuc_thanh_toan" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="orders_payments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="ten_phuong_thuc" Type="varchar" MaxLength="50" />
+    <Property Name="mo_ta" Type="text" />
+    <Property Name="stk" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="products">
     <Key>
@@ -65,6 +95,30 @@
     <Property Name="mo_ta" Type="nvarchar(max)" />
     <Property Name="ngay_bat_dau" Type="date" />
     <Property Name="ngay_ket_thuc" Type="date" />
+    <Property Name="code_promotions" Type="nvarchar(max)" />
+    <Property Name="value_promotions" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="suppliers">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="san_pham_id" Type="int" />
+    <Property Name="ten" Type="varchar" MaxLength="100" />
+    <Property Name="dia_chi" Type="text" />
+    <Property Name="so_dien_thoai" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="ghi_chu" Type="text" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="users">
     <Key>
@@ -83,6 +137,18 @@
     <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="img_user" Type="nvarchar(max)" />
   </EntityType>
+  <Association Name="FK__gifts__order_id__160F4887">
+    <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+    <End Role="gifts" Type="Self.gifts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orders">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="gifts">
+        <PropertyRef Name="order_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__order_det__don_h__6A30C649">
     <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
     <End Role="order_details" Type="Self.order_details" Multiplicity="*" />
@@ -131,6 +197,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__orders_pa__user___208CD6FA">
+    <End Role="users" Type="Self.users" Multiplicity="0..1" />
+    <End Role="orders_payments" Type="Self.orders_payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orders_payments">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__products__dip_ph__571DF1D5">
     <End Role="occasions" Type="Self.occasions" Multiplicity="0..1" />
     <End Role="products" Type="Self.products" Multiplicity="*" />
@@ -155,14 +233,59 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__suppliers__san_p__1DB06A4F">
+    <End Role="products" Type="Self.products" Multiplicity="0..1" />
+    <End Role="suppliers" Type="Self.suppliers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="suppliers">
+        <PropertyRef Name="san_pham_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cart_id_product">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="id_product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cart_id_user">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="id_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="nhom1ltwebModelStoreContainer">
+    <EntitySet Name="cart" EntityType="Self.cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="flower_types" EntityType="Self.flower_types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gifts" EntityType="Self.gifts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="occasions" EntityType="Self.occasions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="order_details" EntityType="Self.order_details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders_payments" EntityType="Self.orders_payments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="promotions" EntityType="Self.promotions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="suppliers" EntityType="Self.suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__gifts__order_id__160F4887" Association="Self.FK__gifts__order_id__160F4887">
+      <End Role="orders" EntitySet="orders" />
+      <End Role="gifts" EntitySet="gifts" />
+    </AssociationSet>
     <AssociationSet Name="FK__order_det__don_h__6A30C649" Association="Self.FK__order_det__don_h__6A30C649">
       <End Role="orders" EntitySet="orders" />
       <End Role="order_details" EntitySet="order_details" />
@@ -179,6 +302,10 @@
       <End Role="promotions" EntitySet="promotions" />
       <End Role="orders" EntitySet="orders" />
     </AssociationSet>
+    <AssociationSet Name="FK__orders_pa__user___208CD6FA" Association="Self.FK__orders_pa__user___208CD6FA">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders_payments" EntitySet="orders_payments" />
+    </AssociationSet>
     <AssociationSet Name="FK__products__dip_ph__571DF1D5" Association="Self.FK__products__dip_ph__571DF1D5">
       <End Role="occasions" EntitySet="occasions" />
       <End Role="products" EntitySet="products" />
@@ -186,6 +313,18 @@
     <AssociationSet Name="FK__products__loai_h__5629CD9C" Association="Self.FK__products__loai_h__5629CD9C">
       <End Role="flower_types" EntitySet="flower_types" />
       <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__suppliers__san_p__1DB06A4F" Association="Self.FK__suppliers__san_p__1DB06A4F">
+      <End Role="products" EntitySet="products" />
+      <End Role="suppliers" EntitySet="suppliers" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cart_id_product" Association="Self.fk_cart_id_product">
+      <End Role="products" EntitySet="products" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cart_id_user" Association="Self.fk_cart_id_user">
+      <End Role="users" EntitySet="users" />
+      <End Role="cart" EntitySet="cart" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

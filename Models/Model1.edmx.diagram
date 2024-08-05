@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8777d391938943628b4855a7a932c41b" Name="Diagram1">
+      <Diagram DiagramId="8777d391938943628b4855a7a932c41b" Name="Diagram1" ZoomLevel="85">
         <EntityTypeShape EntityType="nhom1ltwebModel.flower_types" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="nhom1ltwebModel.occasion" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="nhom1ltwebModel.order_details" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
@@ -18,6 +18,16 @@
         <AssociationConnector Association="nhom1ltwebModel.FK__order_det__san_p__6B24EA82" ManuallyRouted="false" />
         <AssociationConnector Association="nhom1ltwebModel.FK__orders__khach_ha__66603565" ManuallyRouted="false" />
         <AssociationConnector Association="nhom1ltwebModel.FK__orders__promotio__6754599E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.cart" Width="1.5" PointX="5.25" PointY="7.375" />
+        <AssociationConnector Association="nhom1ltwebModel.fk_cart_id_product" />
+        <AssociationConnector Association="nhom1ltwebModel.fk_cart_id_user" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.gift" Width="1.5" PointX="5.25" PointY="11.125" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.orders_payments" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.supplier" Width="1.5" PointX="7.375" PointY="3.75" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__gifts__order_id__160F4887" />
+        <EntityTypeShape EntityType="nhom1ltwebModel.sysdiagram" Width="1.5" PointX="7.375" PointY="6.75" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__orders_pa__user___208CD6FA" />
+        <AssociationConnector Association="nhom1ltwebModel.FK__suppliers__san_p__1DB06A4F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

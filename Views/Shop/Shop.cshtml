@@ -6,132 +6,151 @@
     Layout = "~/Views/_shared/_LayoutPage1.cshtml";
 }
 
-<!-- Start Content -->
-<div class="container py-5">
-    <div class="row">
-
-        <div class="col-lg-3">
-            <h1 class="h2 pb-4">Categories</h1>
-            <ul class="list-unstyled templatemo-accordion">
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Loài
-                        <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul class="collapse show list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "loai_hoa"})">Hoa hồng</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 2 , tieu_chi = "loai_hoa"})">Hoa hướng dương</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 3 , tieu_chi = "loai_hoa"})">Hoa ly</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 4 , tieu_chi = "loai_hoa"})">Hoa tulip</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 5 , tieu_chi = "loai_hoa"})">Hoa lan</a></li>
-                    </ul>
-                </li>
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Dịp lễ
-                        <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "dip"})">Sinh nhật</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 2 , tieu_chi = "dip"})">Kỷ niệm</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 3 , tieu_chi = "dip"})">Tình yêu</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 4 , tieu_chi = "dip"})">Chia buồn</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 5 , tieu_chi = "dip"})">Khai trương</a></li>
-                    </ul>
-                </li>
-                <li class="pb-3">
-                    <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                        Kích cỡ
-                        <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                    </a>
-                    <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "Nhỏ"})">Nhỏ</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 2 , tieu_chi = "Vừa"})">Vừa</a></li>
-                        <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 3 , tieu_chi = "Lớn"})">Lớn</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-lg-9">
-            <div class="row">
-                <div class="col-md-6">
-                    <ul class="list-inline shop-top-menu pb-3 pt-1">
-                        <li class="list-inline-item">
-                            <a class="h3 text-dark text-decoration-none mr-3" href="@Url.Action("Shop", "Shop")">All</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6 pb-4">
-                    <div class="d-flex">
-                        <form id="sortForm" method="get" action="@Url.Action("Shop", "Shop")">
-                            <select class="form-control" name="sortOrder" onchange="document.getElementById('sortForm').submit();">
-                                <option value="default" @(Request.QueryString["sortOrder"] == "default" ? "selected" : "")>Tiêu biểu</option>
-                                <option value="desc" @(Request.QueryString["sortOrder"] == "desc" ? "selected" : "")>Mắc tới rẻ</option>
-                                <option value="asc" @(Request.QueryString["sortOrder"] == "asc" ? "selected" : "")>Rẻ tới mắc</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
 
 
-            </div>
-            <div class="row">
-                @foreach (var product in Model)
-                {
-                    <div class="col-md-4">
-                        <div class="card mb-4 product-wap rounded-0">
-                            <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="@Url.Content("~/Assets/img/" + product.hinh_anh)" alt="@product.ten">
-                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                                    <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white mt-2" href="@Url.Action("ShopSingle", "Shop", new { id = product.id })"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <a href="@Url.Action("ShopSingle", "Shop", new { id = product.id })" class="h3 text-decoration-none">@product.ten</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>@product.kich_thuoc</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0">@product.gia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</p>
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-            @*<div div="row">
-                <ul class="pagination pagination-lg justify-content-end">
-                    <li class="page-item disabled">
-                        <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <h1 class="h2 pb-4">Categories</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            Loài
+                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul class="collapse show list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "loai_hoa"})">Hoa hồng</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 2 , tieu_chi = "loai_hoa"})">Hoa hướng dương</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 3 , tieu_chi = "loai_hoa"})">Hoa ly</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 4 , tieu_chi = "loai_hoa"})">Hoa tulip</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 5 , tieu_chi = "loai_hoa"})">Hoa lan</a></li>
+                        </ul>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            Dịp lễ
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "dip"})">Sinh nhật</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 2 , tieu_chi = "dip"})">Kỷ niệm</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 3 , tieu_chi = "dip"})">Tình yêu</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 4 , tieu_chi = "dip"})">Chia buồn</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 5 , tieu_chi = "dip"})">Khai trương</a></li>
+                        </ul>
                     </li>
-                    <li class="page-item">
-                        <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            Kích cỡ
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "Nhỏ"})">Nhỏ</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 2 , tieu_chi = "Vừa"})">Vừa</a></li>
+                            <li><a class="text-decoration-none" href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 3 , tieu_chi = "Lớn"})">Lớn</a></li>
+                        </ul>
                     </li>
                 </ul>
-            </div>*@
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline shop-top-menu pb-3 pt-1">
+                            <li class="list-inline-item">
+                                <a class="h3 text-dark text-decoration-none mr-3" href="@Url.Action("Shop", "Shop")">All</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 pb-4">
+                        <div class="d-flex">
+                            <form id="sortForm" method="get" action="@Url.Action("Shop", "Shop")">
+                                <select class="form-control" name="sortOrder" onchange="document.getElementById('sortForm').submit();">
+                                    <option value="default" @(Request.QueryString["sortOrder"] == "default" ? "selected" : "")>Tiêu biểu</option>
+                                    <option value="desc" @(Request.QueryString["sortOrder"] == "desc" ? "selected" : "")>Mắc tới rẻ</option>
+                                    <option value="asc" @(Request.QueryString["sortOrder"] == "asc" ? "selected" : "")>Rẻ tới mắc</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card mb-4 product-wap rounded-0">
+                                <div class="card rounded-0">
+                                    <img class="card-img rounded-0 img-fluid" src="@Url.Content("~/Assets/img/" + product.hinh_anh)" alt="@product.ten">
+                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                        <ul class="list-unstyled">
+                                            <li><a class="btn btn-success text-white mt-2" href="@Url.Action("ShopSingle", "Shop", new { id = product.id })"><i class="far fa-eye"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2 add-to-cart" href="javascript:void(0);" data-product-id="@product.id"><i class="fas fa-cart-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="@Url.Action("ShopSingle", "Shop", new { id = product.id })" class="h3 text-decoration-none">@product.ten</a>
+                                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                        <li>@product.kich_thuoc</li>
+                                        <li class="pt-2">
+                                            <!-- Color dots here -->
+                                        </li>
+                                    </ul>
+                                    <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                        <li>
+                                            <!-- Star ratings here -->
+                                        </li>
+                                    </ul>
+                                    <p class="text-center mb-0">@product.gia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<!-- End Content -->
+    <!-- End Content -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        console.log("jQuery is ready");
+
+        $(document).on('click', '.add-to-cart', function () {
+            console.log("Button clicked");
+            var productId = $(this).data('product-id');
+            console.log("Product ID: " + productId);
+
+            $.ajax({
+                url: '@Url.Action("AddToCart", "ShoppingCart")',
+                type: 'GET',
+                data: { id: productId },
+                success: function(response) {
+                    alert('Sản phẩm đã được thêm vào giỏ hàng.');
+                    window.location.href = '@Url.Action("Cart", "ShoppingCart")';
+                },
+                error: function (error) {
+                    //alert('Lỗi khi thêm sản phẩm vào giỏ hàng.');
+                    window.location.href = '@Url.Action("Login", "Login")';
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
+
+
 
