@@ -126,7 +126,7 @@
         <hr>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Quản lí tài khoản</a>
+                <a class="nav-link active" aria-current="page" href="@Url.Action("Success", "Login", new {id = Model.id, password = ViewBag.Password })">Quản lí tài khoản</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Đơn hàng</a>
@@ -145,7 +145,7 @@
     <main class="main-content col-12 col-md-9">
         <div class="container" style="padding-top: 0px !important;">
             <div style="height: 100%">
-                <div class="profile-info table-responsive" style="height: 87vh; overflow-y: auto">
+                <div id="profileInfo" class="profile-info table-responsive" style="height: 87vh; overflow-y: auto">
                     <table class="table table-striped">
                         <tbody>
                             <tr>
@@ -169,7 +169,7 @@
                             </tr>
                             <tr>
                                 <th>Password:</th>
-                                <td>@Model.password</td>
+                                <td>@ViewBag.Password</td>
                             </tr>
                             <tr>
                                 <th>Note:</th>
@@ -181,12 +181,59 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center" style="padding: 3vh 0">
-                                    <button class="btn btn-warning btn-change">Thay đổi</button>
+                                    <button class="btn btn-warning btn-change" onclick="editInfo()">Thay đổi</button>
                                     <button class="btn btn-primary btn-change" style="margin-top: 0" onclick="chooseImage()">Upload ảnh</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+
+                <div id="profileEdit" class="profile-edit table-responsive" style="height: 87vh; overflow-y: auto; display: none">
+                    <form id="editForm" method="post" action="@Url.Action("EditProfile", "Login")">
+                        @Html.HiddenFor(model => model.id)
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th colspan="2"><h3 style="margin: 0">Chỉnh sửa thông tin tài khoản</h3></th>
+                                </tr>
+                                <tr>
+                                    <th>Tên:</th>
+                                    <td><input type="text" name="ten" value="@Model.ten" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th>Địa chỉ:</th>
+                                    <td><input type="text" name="dia_chi" value="@Model.dia_chi" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th>Số điện thoại:</th>
+                                    <td><input type="text" name="so_dien_thoai" value="@Model.so_dien_thoai" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td><input type="email" name="email" value="@Model.email" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th>Password:</th>
+                                    <td><input type="password" name="password" value="@ViewBag.Password" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th>Note:</th>
+                                    <td><input type="text" name="ghi_chu" value="@Model.ghi_chu" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <th>Ngày sinh:</th>
+                                    <td><input type="date" name="ngay_sinh" value="@Model.ngay_sinh" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" align="center" style="padding: 3vh 0">
+                                        <button type="submit" class="btn btn-success btn-change">Lưu thay đổi</button>
+                                        <button type="button" class="btn btn-secondary btn-change" onclick="cancelEdit()">Hủy</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>
@@ -214,5 +261,15 @@
                     alert('Upload failed');
                 }
             });
+    }
+
+    function editInfo() {
+        document.getElementById('profileInfo').style.display = 'none';
+        document.getElementById('profileEdit').style.display = 'block';
+    }
+
+    function cancelEdit() {
+        document.getElementById('profileEdit').style.display = 'none';
+        document.getElementById('profileInfo').style.display = 'block';
     }
 </script>

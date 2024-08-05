@@ -124,7 +124,7 @@
             {
                 <div class="col-12 col-md-4 mb-4">
                     <div class="card h-100">
-                        <a href="#" style="height: 60vh">
+                        <a href="@Url.Action("ShopSingle", "Shop", new { id = product.id })" style="height: 60vh">
                             <img src="@Url.Content("~/Assets/img/" + product.hinh_anh)" class="card-img-top img-fluid" alt="..." style="width: 100%; height: 100%;">
                         </a>
                         <div class="card-body">
@@ -138,12 +138,12 @@
                                 </li>
                                 <li class="text-muted text-right">@product.gia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</li>
                             </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">@product.ten</a>
+                            <a href="@Url.Action("ShopSingle", "Shop", new { id = product.id })" class="h2 text-decoration-none text-dark">@product.ten</a>
                             <p class="card-text">
                                 @product.mo_ta
                             </p>
                             <p class="text-muted">Reviews (24)</p>
-                            <button class="btn_buy">Mua ngay</button>
+                            <a class="btn btn-primary btn-change" href="@Url.Action("ShopSingle", "Shop", new { id = product.id })">Mua ngay</a>
                         </div>
                     </div>
                 </div>
