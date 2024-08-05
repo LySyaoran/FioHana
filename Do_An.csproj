@@ -233,6 +233,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Assets\BaoCao_nhom1 .pdf" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -249,6 +250,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -349,6 +351,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Assets\img\Hoa\" />
     <Folder Include="Assets\img\Uploads\" />
     <Folder Include="Views\Account\" />

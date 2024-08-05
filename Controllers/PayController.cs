@@ -82,10 +82,13 @@ namespace Do_An.Controllers
                     discountAmount = decimal.Parse(promotion.value_promotions);
                 }
 
+                decimal ShippingFee = 32000m;
+
                 ViewBag.TotalAmount = totalAmount;
                 ViewBag.FinalAmount = totalAmount - discountAmount;
                 ViewBag.DiscountAmount = discountAmount;
                 ViewBag.PromotionCode = promoCode;
+                ViewBag.ShippingFee = 32000m;
 
                 return View("Pay", selectedItems);
             }

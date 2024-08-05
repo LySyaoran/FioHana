@@ -56,7 +56,7 @@
                                 <h6 class="my-0">Phí vận chuyển</h6>
                                 <small class="text-muted">Đơn vị vận chuyển: ViettelPost</small>
                             </div>
-                            <span class="text-muted">32.000đ</span>
+                            <span class="text-muted">@ViewBag.ShippingFee</span>
                         </li>
                         @if (ViewBag.PromotionCode != null)
                         {
@@ -234,10 +234,6 @@
                             <div class="form-check">
                                 <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
                                 <label class="form-check-label" for="paypal">VNPAY</label>
-                            </div>
-                            <div class="form-check">
-                                <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
-                                <label class="form-check-label" for="paypal">Internet Panking</label>
                             </div>
                         </div>
 
