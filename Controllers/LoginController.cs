@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Do_An.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Diagnostics;
 
 namespace Do_An.Controllers
 {
@@ -29,7 +30,7 @@ namespace Do_An.Controllers
                 if (user != null)
                 {
                     Session["UserId"] = user.id;
-                    return RedirectToAction("Success", new { ID = user.id });
+                    return RedirectToAction("Success", new { ID = user.id, a.password});
                 }
                 else
                 {
@@ -65,7 +66,7 @@ namespace Do_An.Controllers
             }
         }
 
-        public ActionResult Success(int ID)
+        public ActionResult Success(int ID, string password)
         {
             ViewBag.Tittle = "Manager Account";
             using (var db = new nhom1ltwebEntities())
@@ -74,10 +75,65 @@ namespace Do_An.Controllers
                 if (user != null)
                 {
                     ViewBag.ImagePath = Url.Content("~/Assets/img/Uploads/" + user.img_user);
+                    ViewBag.Password = password;
                     return View(user);
                 }
             }
             return RedirectToAction("Error", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult EditProfile(user model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var db = new nhom1ltwebEntities())
+                    {
+                        var user = db.users.Find(model.id);
+
+                        if (user != null)
+                        {
+                            // Update user information
+                            user.ten = model.ten;
+                            user.dia_chi = model.dia_chi;
+                            user.so_dien_thoai = model.so_dien_thoai;
+                            user.email = model.email;
+                            if (!string.IsNullOrEmpty(model.password))
+                            {
+                                user.password = GetMd5Hash(model.password);
+                            }
+                            user.ghi_chu = model.ghi_chu;
+                            user.ngay_sinh = model.ngay_sinh;
+
+                            // Save changes
+                            db.SaveChanges();
+
+                            //// Optionally, add a success message
+                            TempData["SuccessMessage"] = "Thông tin tài khoản đã được cập nhật.";
+                        }
+                        else
+                        {
+                            TempData["ErrorMessage"] = "User not found.";
+                            return RedirectToAction("Login", "Home");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine("Error updating profile: " + ex.Message);
+                    TempData["ErrorMessage"] = "An error occurred while updating the profile.";
+                    return RedirectToAction("Error", "Home");
+                }
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Invalid input data.";
+                return RedirectToAction("Error", "Home");
+            }
+
+            return RedirectToAction("Success", new { ID = model.id, password = model.password });
         }
 
 
