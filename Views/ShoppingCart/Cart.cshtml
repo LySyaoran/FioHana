@@ -56,9 +56,18 @@
                                     <a href="javascript:void(0);" class="text-danger delete-cart-item"><i class="fas fa-trash fa-lg"></i></a>
                                 </div>
 
-                                <div style="display: flex; align-items: center; justify-content: center" class="col-md-1 col-lg-1 col-xl-1">
-                                    <input style="width: 25px; height: 25px" type="checkbox" name="submit_buy" class="submit_buy" value="" />
-                                </div>
+                                @if(item.product.so_luong_ton_kho == 0)
+                                {
+                                    <div style="display: flex; align-items: center; justify-content: center" class="col-md-1 col-lg-1 col-xl-1">
+                                        <p class="text-danger">Hết hàng</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div style="display: flex; align-items: center; justify-content: center" class="col-md-1 col-lg-1 col-xl-1">
+                                        <input style="width: 25px; height: 25px" type="checkbox" name="submit_buy" class="submit_buy" value="" />
+                                    </div>
+                                }
                             </div>
                         </div>
                     }

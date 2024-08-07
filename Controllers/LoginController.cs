@@ -35,7 +35,7 @@ namespace Do_An.Controllers
                     if (IsAdmin(user.id))
                     {
                         Session["IsAdmin"] = true;
-                        return RedirectToAction("AdminDashboard", "Admin", new { ID = user.id, a.password });
+                        return RedirectToAction("AdminDashboard", "Admin", new { area = "Admin"});
                     }
                     else
                     {
