@@ -9,10 +9,14 @@
 <section class="bg-light">
     <div class="container pb-5">
         <div class="row">
-            <div class="col-lg-5 mt-5">
+            <div class="col-lg-5 mt-5 position-relative">
                 <div class="card mb-3">
                     <img class="card-img img-fluid" src="@Url.Content("~/Assets/img/" + Model.Product.hinh_anh)" alt="Card image cap" id="product-detail">
                 </div>
+                @if (Model.Product.so_luong_ton_kho == 0)
+                {
+                    <img class="position-absolute" src="@Url.Content("~/Assets/img/icon_hethang.png")" alt="Hết hàng" style="top: 0; right: 0; width: 100px; height: 100px;">
+                }
             </div>
             <!-- col end -->
             <div class="col-lg-7 mt-5">
@@ -63,7 +67,7 @@
                         </ul>
                         <div class="row pb-3">
                             <div class="col d-grid">
-                                <a href="#" class="btn btn-success btn-lg" name="submit" value="buy">Buy</a>
+                                <button id="buyBtn" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
                             </div>
                             <div class="col d-grid">
                                 <button id="addToCartBtn" class="btn btn-success btn-lg" name="submit" value="addtocard">Add To Cart</button>
@@ -89,6 +93,10 @@
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
                             <img class="card-img rounded-0 img-fluid" src="@Url.Content("~/Assets/img/" + product.hinh_anh)" alt="@product.ten">
+                            @if (product.so_luong_ton_kho == 0)
+                            {
+                                <img class="position-absolute" src="@Url.Content("~/Assets/img/icon_hethang.png")" alt="Hết hàng" style="top: 0; right: 0; width: 100px; height: 100px;">
+                            }
                             <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white mt-2" href="@Url.Action("ShopSingle", "Shop", new { id = product.id })"><i class="far fa-eye"></i></a></li>
@@ -128,15 +136,23 @@
 </section>
 <!-- End Article -->
 
-
 <script>
     document.getElementById('addToCartBtn').addEventListener('click', function () {
         var userId = '@Session["UserId"]'; // Lấy ID của user đang đăng nhập
+        var productQuantity = @Model.Product.so_luong_ton_kho; // Số lượng tồn kho của sản phẩm
+
+        if (productQuantity === 0) {
+            // Nếu sản phẩm hết hàng
+            alert('Sản phẩm đã hết hàng!');
+            return;
+        }
+
         if (!userId || userId === 'null') {
             // Nếu user chưa đăng nhập, chuyển hướng đến trang đăng nhập
             window.location.href = '@Url.Action("Login", "Login")';
             return;
         }
+
         var productId = '@Model.Product.id'; // Lấy ID của sản phẩm hiện tại
         var quantity = parseInt(document.getElementById('var-value').innerText); // Lấy số lượng sản phẩm
 
@@ -149,12 +165,10 @@
                 quantity: quantity
             },
             success: function (response) {
-                if (response.success)
-                {
+                if (response.success) {
                     alert('Thêm vào giỏ hàng thành công.');
                     window.location.href = '@Url.Action("Cart", "ShoppingCart")';
-                } else
-                {
+                } else {
                     alert('Thêm vào giỏ hàng không thành công.');
                 }
             },
@@ -164,3 +178,4 @@
         });
     });
 </script>
+

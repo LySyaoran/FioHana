@@ -90,13 +90,24 @@
                     @foreach (var product in Model)
                     {
                         <div class="col-md-4">
-                            <div class="card mb-4 product-wap rounded-0">
-                                <div class="card rounded-0">
+                            <div class="card mb-4 product-wap rounded-0 position-relative">
+                                <div class="card rounded-0 position-relative">
                                     <img class="card-img rounded-0 img-fluid" src="@Url.Content("~/Assets/img/" + product.hinh_anh)" alt="@product.ten">
+                                    @if (product.so_luong_ton_kho == 0)
+                                    {
+                                        <img class="position-absolute" src="@Url.Content("~/Assets/img/icon_hethang.png")" alt="Hết hàng" style="top: 0; right: 0; width: 100px; height: 100px;">
+                                    }
                                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                         <ul class="list-unstyled">
                                             <li><a class="btn btn-success text-white mt-2" href="@Url.Action("ShopSingle", "Shop", new { id = product.id })"><i class="far fa-eye"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2 add-to-cart" href="javascript:void(0);" data-product-id="@product.id"><i class="fas fa-cart-plus"></i></a></li>
+                                            <li>
+                                                <a class="btn btn-success text-white mt-2 add-to-cart"
+                                                   href="javascript:void(0);"
+                                                   data-product-id="@product.id"
+                                                   data-so-luong-ton-kho="@product.so_luong_ton_kho">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -118,6 +129,7 @@
                             </div>
                         </div>
                     }
+
                 </div>
             </div>
         </div>
@@ -131,21 +143,28 @@
         $(document).on('click', '.add-to-cart', function () {
             console.log("Button clicked");
             var productId = $(this).data('product-id');
+            var soLuongTonKho = $(this).data('so-luong-ton-kho');
             console.log("Product ID: " + productId);
-
-            $.ajax({
-                url: '@Url.Action("AddToCart", "ShoppingCart")',
-                type: 'GET',
-                data: { id: productId },
-                success: function(response) {
-                    alert('Sản phẩm đã được thêm vào giỏ hàng.');
-                    window.location.href = '@Url.Action("Cart", "ShoppingCart")';
-                },
-                error: function (error) {
-                    //alert('Lỗi khi thêm sản phẩm vào giỏ hàng.');
-                    window.location.href = '@Url.Action("Login", "Login")';
-                }
-            });
+            if (soLuongTonKho == 0)
+            {
+                alert('Sản phẩm đã hết hàng, vui lòng đợi.');
+            }
+            else
+            {
+                $.ajax({
+                    url: '@Url.Action("AddToCart", "ShoppingCart")',
+                    type: 'GET',
+                    data: { id: productId },
+                    success: function (response) {
+                        alert('Sản phẩm đã được thêm vào giỏ hàng.');
+                        window.location.href = '@Url.Action("Cart", "ShoppingCart")';
+                    },
+                    error: function (error) {
+                        //alert('Lỗi khi thêm sản phẩm vào giỏ hàng.');
+                        window.location.href = '@Url.Action("Login", "Login")';
+                    }
+                });
+            }
         });
     });
     </script>
