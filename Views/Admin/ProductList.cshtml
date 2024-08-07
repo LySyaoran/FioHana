@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Do_An.Models.product>
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<h2>Product List</h2>
+
+<div class="d-flex justify-content-between mb-3">
+    <div></div> <!-- Placeholder to push the button to the right -->
+    @Html.ActionLink("+ Thêm", "AddProduct", "Admin", new { @class = "btn btn-success" })
+</div>
+
+
+<table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th class="text-center">Tên</th>
+            <th class="text-center">Mô tả</th>
+            <th class="text-center">Giá</th>
+            <th class="text-center">Số lượng</th>
+            <th class="text-center">Ngày nhập</th>
+            <th class="text-center">Loại hoa</th>
+            <th class="text-center">Dịp phù hợp</th>
+            <th class="text-center">Kích thước</th>
+            <th class="text-center">Màu sắc</th>
+            <th class="text-center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ten)</td>
+                <td>@Html.DisplayFor(modelItem => item.mo_ta)</td>
+                <td>@Html.DisplayFor(modelItem => item.gia)</td>
+                <td>@Html.DisplayFor(modelItem => item.so_luong_ton_kho)</td>
+                <td>@Html.DisplayFor(modelItem => item.ngay_nhap_kho)</td>
+                <td>@Html.DisplayFor(modelItem => item.loai_hoa_id)</td>
+                <td>@Html.DisplayFor(modelItem => item.dip_phu_hop_id)</td>
+                <td>@Html.DisplayFor(modelItem => item.kich_thuoc)</td>
+                <td>@Html.DisplayFor(modelItem => item.mau_sac)</td>
+                <td>
+                    <div class="d-grid gap-2">
+                        @Html.ActionLink("Edit", "EditProduct", new { id = item.id }, new { @class = "btn btn-primary btn-sm w-100 mb-1" })
+                        @Html.ActionLink("Delete", "DeleteProduct", new { id = item.id }, new { @class = "btn btn-danger btn-sm w-100" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+</div>

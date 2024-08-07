@@ -1,0 +1,116 @@
+﻿@model Do_An.Models.product
+
+@{
+    ViewBag.Title = "Add Product";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<h2>Add Product</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            Tên
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Mô tả
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mo_ta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mo_ta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Giá
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.gia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Hình ảnh
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hinh_anh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.hinh_anh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Số lượng
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.so_luong_ton_kho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.so_luong_ton_kho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Ngày nhập
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ngay_nhap_kho, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ngay_nhap_kho, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Loại hoa
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.loai_hoa_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.loai_hoa_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Dịp phù hợp
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.dip_phu_hop_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dip_phu_hop_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Kích thước
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.kich_thuoc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.kich_thuoc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Màu sắc
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mau_sac, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.mau_sac, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group text-center">
+            <div class="btn-group" role="group">
+                <button type="submit" class="btn btn-success">Thêm</button>
+                <a href="@Url.Action("ProductList")" class="btn btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .btn-group .btn {
+        min-width: 100px; /* Ensures buttons have the same minimum width */
+    }
+
+        .btn-group .btn + .btn {
+            margin-left: 10px;
+        }
+</style>

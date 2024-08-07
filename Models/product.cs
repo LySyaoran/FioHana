@@ -11,7 +11,8 @@ namespace Do_An.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,9 +26,13 @@ namespace Do_An.Models
         public int id { get; set; }
         public string ten { get; set; }
         public string mo_ta { get; set; }
+        [Range(1, double.MaxValue, ErrorMessage = "Giá ph?i l?n h?n ho?c b?ng 1")]
         public decimal gia { get; set; }
         public string hinh_anh { get; set; }
+        [Range(0, int.MaxValue, ErrorMessage = "S? l??ng t?n kho không ???c âm")]
         public Nullable<int> so_luong_ton_kho { get; set; }
+        [DataType(DataType.Date)]
+        [CustomDateValidation(ErrorMessage = "Ngày nh?p không th? là ngày trong t??ng lai")]
         public Nullable<System.DateTime> ngay_nhap_kho { get; set; }
         public Nullable<int> loai_hoa_id { get; set; }
         public Nullable<int> dip_phu_hop_id { get; set; }
@@ -43,5 +48,17 @@ namespace Do_An.Models
         public virtual ICollection<cart> carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<supplier> suppliers { get; set; }
+    }
+
+    public class CustomDateValidation : ValidationAttribute
+    {
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            if (value is DateTime date && date > DateTime.Now)
+            {
+                return new ValidationResult(ErrorMessage);
+            }
+            return ValidationResult.Success;
+        }
     }
 }
