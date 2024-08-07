@@ -234,6 +234,14 @@
     </Content>
     <Content Include="Assets\BaoCao_nhom1 .pdf" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Admin\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminDashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\EditUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\ProductList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UserList.cshtml" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
@@ -251,6 +259,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
@@ -354,7 +363,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Assets\img\Hoa\" />
