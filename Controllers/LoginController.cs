@@ -30,7 +30,18 @@ namespace Do_An.Controllers
                 if (user != null)
                 {
                     Session["UserId"] = user.id;
-                    return RedirectToAction("Success", new { ID = user.id, a.password});
+
+                    // Kiểm tra vai trò của user
+                    if (IsAdmin(user.id))
+                    {
+                        Session["IsAdmin"] = true;
+                        return RedirectToAction("AdminDashboard", "Admin", new { ID = user.id, a.password });
+                    }
+                    else
+                    {
+                        Session["IsAdmin"] = false;
+                        return RedirectToAction("Success", new { ID = user.id, a.password });
+                    }
                 }
                 else
                 {
@@ -40,6 +51,20 @@ namespace Do_An.Controllers
             }
         }
 
+        private bool IsAdmin(int userId)
+        {
+            using (var db = new nhom1ltwebEntities())
+            {
+                var user = db.users.Find(userId);
+                if (user != null)
+                {
+                    // Giả sử 'vai_tro' là một trường trong bảng users
+                    // và giá trị "admin" đại diện cho vai trò admin
+                    return string.Equals(user.vai_tro, "admin", StringComparison.OrdinalIgnoreCase);
+                }
+                return false;
+            }
+        }
         [HttpGet]
         public ActionResult Signup()
         {
@@ -151,5 +176,6 @@ namespace Do_An.Controllers
                 return sb.ToString();
             }
         }
+
     }
 }

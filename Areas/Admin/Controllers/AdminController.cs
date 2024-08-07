@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Do_An.Models;
 
-namespace Do_An.Controllers
+namespace Do_An.Areas.Admin.Controllers
 {
     [AdminAuthorize]
     public class AdminController : Controller
     {
         private nhom1ltwebEntities db = new nhom1ltwebEntities();
 
-        // GET: Admin/Dashboard
+        // GET: Admin
         public ActionResult AdminDashboard()
         {
             ViewBag.TotalUsers = db.users.Count();
@@ -22,8 +21,8 @@ namespace Do_An.Controllers
             return View();
         }
 
-       
-        
+
+
         // GET: Admin/UserList
         public ActionResult UserList()
         {
@@ -201,7 +200,7 @@ namespace Do_An.Controllers
             base.Dispose(disposing);
         }
     }
-            
+
     // Custom attribute để kiểm tra quyền admin
     public class AdminAuthorizeAttribute : AuthorizeAttribute
     {
