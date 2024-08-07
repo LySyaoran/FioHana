@@ -30,6 +30,9 @@ namespace Do_An.Models
         public string hinh_thuc_giao_hang { get; set; }
         public Nullable<int> promotion_id { get; set; }
         public string phuong_thuc_thanh_toan1 { get; set; }
+        public string dia_chi_nhan_hang { get; set; }
+        public string ho_ten { get; set; }
+        public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_details> order_details { get; set; }

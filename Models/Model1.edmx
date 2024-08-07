@@ -63,6 +63,9 @@
           <Property Name="hinh_thuc_giao_hang" Type="nvarchar" MaxLength="50" />
           <Property Name="promotion_id" Type="int" />
           <Property Name="phuong_thuc_thanh_toan" Type="nvarchar(max)" />
+          <Property Name="dia_chi_nhan_hang" Type="nvarchar(max)" />
+          <Property Name="ho_ten" Type="nvarchar(max)" />
+          <Property Name="email" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="orders_payments">
           <Key>
@@ -382,6 +385,9 @@
           <NavigationProperty Name="promotion" Relationship="Self.FK__orders__promotio__6754599E" FromRole="orders" ToRole="promotions" />
           <NavigationProperty Name="gifts" Relationship="nhom1ltwebModel.FK__gifts__order_id__160F4887" FromRole="order" ToRole="gift" />
           <Property Name="phuong_thuc_thanh_toan1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="dia_chi_nhan_hang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ho_ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -722,6 +728,9 @@
           <EntitySetMapping Name="orders">
             <EntityTypeMapping TypeName="nhom1ltwebModel.order">
               <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="ho_ten" ColumnName="ho_ten" />
+                <ScalarProperty Name="dia_chi_nhan_hang" ColumnName="dia_chi_nhan_hang" />
                 <ScalarProperty Name="phuong_thuc_thanh_toan1" ColumnName="phuong_thuc_thanh_toan" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="khach_hang_id" ColumnName="khach_hang_id" />
