@@ -1,0 +1,57 @@
+﻿@model Do_An.Models.product
+
+@{
+    ViewBag.Title = "Delete Product";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<h2>Delete Product</h2>
+
+<h3>Are you sure you want to delete this product?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.ten)</dt>
+        <dd>@Html.DisplayFor(model => model.ten)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.mo_ta)</dt>
+        <dd>@Html.DisplayFor(model => model.mo_ta)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.gia)</dt>
+        <dd>@Html.DisplayFor(model => model.gia)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.hinh_anh)</dt>
+        <dd><img src="@Model.hinh_anh" alt="@Model.ten" style="height:50px;width:50px;" /></dd>
+
+        <dt>@Html.DisplayNameFor(model => model.so_luong_ton_kho)</dt>
+        <dd>@Html.DisplayFor(model => model.so_luong_ton_kho)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.ngay_nhap_kho)</dt>
+        <dd>@Html.DisplayFor(model => model.ngay_nhap_kho)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.loai_hoa_id)</dt>
+        <dd>@Html.DisplayFor(model => model.loai_hoa_id)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.dip_phu_hop_id)</dt>
+        <dd>@Html.DisplayFor(model => model.dip_phu_hop_id)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.kich_thuoc)</dt>
+        <dd>@Html.DisplayFor(model => model.kich_thuoc)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.id_gg)</dt>
+        <dd>@Html.DisplayFor(model => model.id_gg)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.mau_sac)</dt>
+        <dd>@Html.DisplayFor(model => model.mau_sac)</dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "ProductList")
+        </div>
+    }
+</div>

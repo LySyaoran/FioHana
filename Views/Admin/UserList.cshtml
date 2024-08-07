@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Do_An.Models.user>
+
+@{
+    ViewBag.Title = "User List";
+    Layout = "~/Views/_shared/_LayoutPage1.cshtml";
+}
+
+<h2>User List</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dia_chi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.so_dien_thoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vai_tro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ghi_chu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ngay_sinh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dia_chi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.so_dien_thoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.vai_tro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ghi_chu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ngay_sinh)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditUser", new { id = item.id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Delete", "DeleteUser", new { id = item.id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    @Html.ActionLink("Create New", "CreateUser", new { @class = "btn btn-success" })
+</div>
+
