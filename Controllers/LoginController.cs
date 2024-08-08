@@ -7,6 +7,9 @@ using Do_An.Models;
 using System.Security.Cryptography;
 using System.Text;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using System.Collections.Specialized;
+using System.Net;
 
 namespace Do_An.Controllers
 {
@@ -50,6 +53,128 @@ namespace Do_An.Controllers
                 }
             }
         }
+
+        private readonly string clientId = "406209051907-5ab3r694h4mshbinrtqp4jtstsdiqa3l.apps.googleusercontent.com";
+        private readonly string clientSecret = "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";
+        private readonly string redirectUri = "https://localhost:44314/Login/GoogleCallback";
+
+        [RequireHttps]
+        public ActionResult LoginGoogle()
+        {
+            var state = Guid.NewGuid().ToString();
+            var authorizeUrl = string.Format(
+                "https://accounts.google.com/o/oauth2/auth?client_id={0}&redirect_uri={1}&response_type=code&scope=email profile&state={2}",
+                clientId,
+                redirectUri,
+                state
+            );
+            return Redirect(authorizeUrl);
+        }
+
+
+        [RequireHttps]
+        public ActionResult GoogleCallback(string code, string state)
+        {
+            System.Diagnostics.Debug.WriteLine("Code: " + code);
+            System.Diagnostics.Debug.WriteLine("State: " + state);
+
+            if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(state))
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            var tokenUrl = "https://accounts.google.com/o/oauth2/token";
+            var userInfoUrl = "https://www.googleapis.com/oauth2/v2/userinfo";
+
+            var parameters = new Dictionary<string, string>
+    {
+        {"code", code},
+        {"client_id", clientId},
+        {"client_secret", clientSecret},
+        {"redirect_uri", redirectUri},
+        {"grant_type", "authorization_code"}
+    };
+
+            var tokenResponse = HttpPost(tokenUrl, parameters);
+            if (tokenResponse == null || !tokenResponse.ContainsKey("access_token"))
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            var accessToken = tokenResponse["access_token"];
+
+            var userInfoResponse = HttpGet(userInfoUrl, accessToken);
+            if (userInfoResponse == null || !userInfoResponse.ContainsKey("email"))
+            {
+                return RedirectToAction("Login", "Login");
+            }
+
+            var email = userInfoResponse["email"];
+            var name = userInfoResponse["name"];
+
+            using (var db = new nhom1ltwebEntities())
+            {
+                var user = db.users.FirstOrDefault(u => u.email == email);
+
+                if (user == null)
+                {
+                    // Tạo mới user nếu chưa tồn tại
+                    user = new user
+                    {
+                        email = email,
+                        ten = name,
+                        password = GetMd5Hash(Guid.NewGuid().ToString()) // Mã hóa password bằng một chuỗi ngẫu nhiên
+                    };
+                    db.users.Add(user);
+                    db.SaveChanges();
+                }
+
+                // Lưu thông tin người dùng vào session
+                Session["UserId"] = user.id;
+                Session["Email"] = user.email;
+                Session["Name"] = user.ten;
+
+                // Kiểm tra vai trò của user
+                if (IsAdmin(user.id))
+                {
+                    Session["IsAdmin"] = true;
+                    return RedirectToAction("AdminDashboard", "Admin", new { area = "Admin" });
+                }
+                else
+                {
+                    Session["IsAdmin"] = false;
+                    return RedirectToAction("Success", new { ID = user.id, password = user.password });
+                }
+            }
+        }
+
+
+        private Dictionary<string, string> HttpPost(string url, Dictionary<string, string> parameters)
+        {
+            using (var client = new WebClient())
+            {
+                var nameValueCollection = new NameValueCollection();
+                foreach (var parameter in parameters)
+                {
+                    nameValueCollection.Add(parameter.Key, parameter.Value);
+                }
+
+                var response = client.UploadValues(url, "POST", nameValueCollection);
+                var result = Encoding.ASCII.GetString(response);
+                return JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+            }
+        }
+
+        private Dictionary<string, string> HttpGet(string url, string accessToken)
+        {
+            using (var client = new WebClient())
+            {
+                client.Headers.Add("Authorization", "Bearer " + accessToken);
+                var response = client.DownloadString(url);
+                return JsonConvert.DeserializeObject<Dictionary<string, string>>(response);
+            }
+        }
+
 
         private bool IsAdmin(int userId)
         {
