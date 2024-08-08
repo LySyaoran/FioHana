@@ -53,6 +53,7 @@ namespace Do_An.Controllers
 
             ViewBag.FinalAmount = totalAmount + shippingFee;
             Session["FinalAmount"] = totalAmount + shippingFee;
+            Session["TotalAmount"] = totalAmount;
 
             return View(selectedItems);
         }
@@ -63,6 +64,7 @@ namespace Do_An.Controllers
             using (var db = new nhom1ltwebEntities())
             {
                 var promotion = db.promotions.FirstOrDefault(p => p.code_promotions == promoCode);
+                Session["PromotionID"] = promotion?.id;
                 if (promotion == null)
                 {
                     TempData["PromotionError"] = "Mã giảm giá không hợp lệ.";
@@ -101,6 +103,8 @@ namespace Do_An.Controllers
                 ViewBag.TotalAmount = totalAmount;
                 ViewBag.FinalAmount = totalAmount - discountAmount + shippingFee;
                 Session["FinalAmount"] = totalAmount - discountAmount + shippingFee;
+                Session["DiscountAmount"] = discountAmount;
+                Session["TotalAmount"] = totalAmount;
                 ViewBag.DiscountAmount = discountAmount;
                 ViewBag.PromotionCode = promoCode;
 
@@ -109,7 +113,7 @@ namespace Do_An.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitOrder(string firstName, string lastName, string email, string address, string city, string district, string ward, string paymentMethod)
+        public ActionResult SubmitOrder(string firstName, string lastName, string email, string address, string cityName, string districtName, string wardName, string paymentMethod)
         {
             if (!ModelState.IsValid)
             {
@@ -117,7 +121,11 @@ namespace Do_An.Controllers
             }
 
             // Kết hợp các phần của địa chỉ
-            string fullAddress = $"{address}, {ward}, {district}, {city}";
+            string fullAddress = $"{address}, {wardName}, {districtName}, {cityName}";
+            Session["address"] = $"{address}";
+            Session["ward"] = $"{wardName}";
+            Session["district"] = $"{districtName}";
+            Session["city"] = $"{cityName}";
 
             var order = new order
             {
@@ -126,22 +134,29 @@ namespace Do_An.Controllers
                 email = email,
                 dia_chi_nhan_hang = fullAddress,
                 phuong_thuc_thanh_toan1 = paymentMethod,
-                promotion_id = null,
+                promotion_id = Session["PromotionID"] != null ? (int?)Session["PromotionID"] : null,
                 tong_tien = (decimal)Session["FinalAmount"],
                 ngay_dat_hang = DateTime.Now,
                 trang_thai = "Chưa giao hàng",
             };
 
+            Session["DateOrder"] = order.ngay_dat_hang;
+            Session["PaymentMethod"] = order.phuong_thuc_thanh_toan1;
+            Session["Name"] = order.ho_ten;
+
             // Thêm order vào DbContext và lưu vào cơ sở dữ liệu
             db.orders.Add(order);
             db.SaveChanges();
+
+            Session["OrderID"] = order.id;
 
             // Chuyển hướng người dùng đến trang xác nhận đơn hàng hoặc trang khác
             if (order.phuong_thuc_thanh_toan1 == "vnpay")
             {
                 return RedirectToAction("UrlPayment", new { orderCode = order.id });
             }
-            else {
+            else
+            {
                 if (order.phuong_thuc_thanh_toan1 == "cod")
                 {
                     return RedirectToAction("OrderConfirmation", new { orderCode = order.id });
@@ -224,11 +239,60 @@ namespace Do_An.Controllers
 
                     // Cập nhật trạng thái đơn hàng trong cơ sở dữ liệu
                     var order = db.orders.FirstOrDefault(o => o.id == orderId);
+
                     if (order != null)
                     {
                         order.trang_thai = "Paid"; // Hoặc trạng thái tương ứng của bạn
                         db.SaveChanges();
                     }
+
+                    var selectedItems = Session["SelectedCartItems"] as List<cart>;
+                    foreach (var item in selectedItems)
+                    {
+                        if (item == null)
+                        {
+                            Console.WriteLine("Item is null");
+                        }
+                        else
+                        {
+                            // Ensure product is loaded
+                            if (item.product == null)
+                            {
+                                item.product = db.products.FirstOrDefault(p => p.id == item.id_product);
+                            }
+
+                            if (item.product != null)
+                            {
+                                var orderDetail = new order_details
+                                {
+                                    don_hang_id = (int)Session["OrderID"],
+                                    san_pham_id = item.id_product,
+                                    so_luong = item.soluong_sp,
+                                    don_gia = (decimal)(item.product.gia * item.soluong_sp),
+                                    giam_gia = 0m
+                                };
+                                db.order_details.Add(orderDetail);
+
+                                // Cập nhật số lượng tồn kho
+                                var change_quantity = db.products.FirstOrDefault(p => p.id == item.id_product);
+                                change_quantity.so_luong_ton_kho -= item.soluong_sp;
+
+                                // Xóa sản phẩm khỏi giỏ hàng
+                                var cartItem = db.carts.FirstOrDefault(c => c.id_user == item.id_user && c.id_product == item.id_product);
+                                if (cartItem != null)
+                                {
+                                    db.carts.Remove(cartItem);
+                                }
+
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                Console.WriteLine("Product is null for item with id_product: " + item.id_product);
+                            }
+                        }
+                    }
+
                 }
                 else
                 {
@@ -255,15 +319,56 @@ namespace Do_An.Controllers
             return View();
         }
 
-        public ActionResult OrderConfirmation(int orderCode)
+        public ActionResult OrderConfirmation()
         {
-            var order = db.orders.FirstOrDefault(o => o.id == orderCode);
-            if (order == null)
+            var selectedItems = Session["SelectedCartItems"] as List<cart>;
+            foreach (var item in selectedItems)
             {
-                return HttpNotFound();
+                if (item == null)
+                {
+                    Console.WriteLine("Item is null");
+                }
+                else
+                {
+                    // Ensure product is loaded
+                    if (item.product == null)
+                    {
+                        item.product = db.products.FirstOrDefault(p => p.id == item.id_product);
+                    }
+
+                    if (item.product != null)
+                    {
+                        var orderDetail = new order_details
+                        {
+                            don_hang_id = (int)Session["OrderID"],
+                            san_pham_id = item.id_product,
+                            so_luong = item.soluong_sp,
+                            don_gia = (decimal)(item.product.gia * item.soluong_sp),
+                            giam_gia = 0m
+                        };
+                        db.order_details.Add(orderDetail);
+
+                        // Cập nhật số lượng tồn kho
+                        var change_quantity = db.products.FirstOrDefault(p => p.id == item.id_product);
+                        change_quantity.so_luong_ton_kho -= item.soluong_sp;
+
+                        // Xóa sản phẩm khỏi giỏ hàng
+                        var cartItem = db.carts.FirstOrDefault(c => c.id_user == item.id_user && c.id_product == item.id_product);
+                        if (cartItem != null)
+                        {
+                            db.carts.Remove(cartItem);
+                        }
+
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Product is null for item with id_product: " + item.id_product);
+                    }
+                }
             }
 
-            return View(order);
+            return View();
         }
     }
 }

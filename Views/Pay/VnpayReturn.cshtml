@@ -1,4 +1,5 @@
-﻿
+﻿@using Do_An.Models
+@model Do_An.Models.cart
 @{
     ViewBag.Tittle = "Order Confirmation";
     Layout = "~/Views/_shared/_LayoutPage1.cshtml";
@@ -180,32 +181,44 @@
                         </tr>
                         <tr class="intro">
                             <td>
-                                Thank you for your order.
+                                Cảm ơn bạn đã mua hàng.
                             </td>
                             <td class="text-right">
-                                <span class="num">Order #00302</span><br>
-                                October 18, 2017
+                                <span class="num">@ViewBag.OrderId</span><br>
+                                @Session["DateOrder"]
                             </td>
                         </tr>
                         <tr class="details">
                             <td colspan="2">
-                                <table>
+                                <table style="width: 100%">
                                     <thead>
                                         <tr>
-                                            <th class="desc">Item Description</th>
-                                            <th class="id">Item ID</th>
-                                            <th class="qty">Quantity</th>
-                                            <th class="amt">Subtotal</th>
+                                            <th class="desc">Chi tiết sản phẩm</th>
+                                            <th class="qty">Số lượng</th>
+                                            <th class="amt">Tiền hàng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="item">
-                                            <td class="desc">Name or Description of item</td>
-                                            <td class="id num">MH792AM</td>
-                                            <td class="qty">1</td>
-                                            <td class="amt">$100.00</td>
-                                        </tr>
+                                        @if (Session["SelectedCartItems"] != null)
+                                        {
+                                            var selectedItems = Session["SelectedCartItems"] as List<cart>;
+                                            foreach (var item in selectedItems)
+                                            {
+                                                <tr class="item">
+                                                    <td style="text-align: center" class="desc">@item.product.ten</td>
+                                                    <td style="text-align: center" class="qty">@item.soluong_sp</td>
+                                                    <td style="text-align: center" class="amt">@String.Format("{0:N0}", Convert.ToInt32(item.product.gia * item.soluong_sp)) đ</td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="3" style="text-align: center">Không có sản phẩm nào được chọn.</td>
+                                            </tr>
+                                        }
                                     </tbody>
+
                                 </table>
                             </td>
                         </tr>
@@ -214,20 +227,23 @@
                             <td>
                                 <table style="margin-top: 30px">
                                     <tr class="subtotal">
-                                        <td class="num">Subtotal</td>
-                                        <td class="num">$100.00</td>
+                                        <td class="num">Tổng tiền</td>
+                                        <td style="font-weight: 700" class="num">@String.Format("{0:N0}", Convert.ToDecimal(Session["TotalAmount"])) đ</td>
                                     </tr>
                                     <tr class="fees">
-                                        <td class="num">Shipping & Handling</td>
-                                        <td class="num">$0.00</td>
+                                        <td class="num">Phí vận chuyển</td>
+                                        <td style="font-weight: 700" class="num">@String.Format("{0:N0}", 32000) đ</td>
                                     </tr>
-                                    <tr class="tax">
-                                        <td class="num">Tax (7%)</td>
-                                        <td class="num">$7.00</td>
-                                    </tr>
+                                    @if (Session["DiscountAmount"] != null)
+                                    {
+                                        <tr class="tax">
+                                            <td class="num">Mã giảm giá</td>
+                                            <td style="font-weight: 700" class="num">@String.Format("{0:N0}", Convert.ToDecimal(Session["DiscountAmount"])) đ</td>
+                                        </tr>
+                                    }
                                     <tr class="total">
-                                        <td>Total</td>
-                                        <td>$107.00</td>
+                                        <td>Thành tiền</td>
+                                        <td>@String.Format("{0:N0}", Convert.ToDecimal(Session["FinalAmount"])) Đ</td>
                                     </tr>
                                 </table>
                             </td>
@@ -237,10 +253,10 @@
                                 <div class="columns">
                                     <h5>Thông tin nhận hàng</h5>
                                     <p>
-                                        Philip Brooks<br>
-                                        134 Madison Ave.<br>
-                                        New York NY 00102<br>
-                                        United States
+                                        @Session["Name"]<br>
+                                        @Session["address"]<br>
+                                        @Session["ward"]<br>
+                                        @Session["district"], @Session["city"]
                                     </p>
                                 </div>
                             </td>
@@ -249,8 +265,8 @@
                             <td>
                                 <div class="columns">
                                     <h5>Phương thức thanh toán</h5>
-                                    <p>
-                                        Ví VNPAY
+                                    <p style="text-transform: uppercase">
+                                        @Session["PaymentMethod"]
                                     </p>
                                 </div>
                             </td>
@@ -261,14 +277,4 @@
         </div>
     </main>
 </div>
-
-
-<script>
-    document.getElementById("displayMsg").innerText = "@ViewBag.Message";
-    document.getElementById("displayTmnCode").innerText = "@ViewBag.TerminalID";
-    document.getElementById("displayTxnRef").innerText = "@ViewBag.OrderId";
-    document.getElementById("displayVnpayTranNo").innerText = "@ViewBag.VnpayTranId";
-    document.getElementById("displayAmount").innerText = "@ViewBag.Amount";
-    document.getElementById("displayBankCode").innerText = "@ViewBag.BankCode";
-</script>
 
