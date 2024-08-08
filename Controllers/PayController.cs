@@ -58,6 +58,7 @@ namespace Do_An.Controllers
             return View(selectedItems);
         }
 
+
         [HttpPost]
         public ActionResult ApplyPromotion(string promoCode)
         {
