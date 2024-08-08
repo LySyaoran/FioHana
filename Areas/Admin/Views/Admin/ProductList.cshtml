@@ -7,6 +7,15 @@
 
 <h2>Product List</h2>
 
+
+<form method="get" action="@Url.Action("ProductList")" class="form-inline mb-3">
+    <div class="form-group">
+        <label for="searchString">Search:</label>
+        <input type="text" name="searchString" class="form-control" placeholder="Enter product name" value="@ViewBag.CurrentFilter" />
+    </div>
+    <button type="submit" class="btn btn-primary ml-2">Search</button>
+</form>
+
 <div class="d-flex justify-content-between mb-3">
     <div></div> <!-- Placeholder to push the button to the right -->
     @Html.ActionLink("+ Thêm", "AddProduct", "Admin", new { @class = "btn btn-success" })
