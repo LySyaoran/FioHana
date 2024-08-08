@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Do_An.Models;
+using System.Data.Entity;
 
 namespace Do_An.Areas.Admin.Controllers
 {
@@ -15,10 +17,41 @@ namespace Do_An.Areas.Admin.Controllers
         public ActionResult AdminDashboard()
         {
             ViewBag.TotalUsers = db.users.Count();
+            ViewBag.TotalProducts = db.products.Count();
+
             ViewBag.TotalAdmins = db.users.Count(u => u.vai_tro.ToLower() == "admin");
             ViewBag.RecentUsers = db.users.OrderByDescending(u => u.ngay_sinh).Take(5).ToList();
-            // Thêm dữ liệu cho biểu đồ nếu cần
+
+            var flowerCounts = db.products
+         .GroupBy(p => p.loai_hoa_id)
+         .Select(g => new
+         {
+             FlowerType = g.Key,
+             Count = g.Count()
+         })
+         .ToList();
+
+            // Tạo dữ liệu cho chart
+            ViewBag.FlowerCounts = flowerCounts.Select(f => new
+            {
+                FlowerName = GetFlowerName(f.FlowerType),
+                f.Count
+            }).ToList();
+
             return View();
+        }
+
+        private string GetFlowerName(int? loaiHoaId)
+        {
+            switch (loaiHoaId)
+            {
+                case 1: return "Hoa Hồng";
+                case 2: return "Hoa Hướng Dương";
+                case 3: return "Hoa Ly";
+                case 4: return "Hoa Tulip";
+                case 5: return "Hoa Lan";
+                default: return "Unknown";
+            }
         }
 
 
@@ -95,10 +128,17 @@ namespace Do_An.Areas.Admin.Controllers
         }
 
 
-        public ActionResult ProductList()
+        public ActionResult ProductList(string searchString)
         {
-            var products = db.products.ToList();
-            return View(products);
+            var products = from p in db.products
+                           select p;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p => p.ten.Contains(searchString));
+            }
+
+            return View(products.ToList());
         }
 
         // GET: Admin/EditProduct/5
