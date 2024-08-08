@@ -91,7 +91,7 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "loai_hoa"})"><img src="~/Assets/img/HoaHong/HoaHuongDuong.png"  class="rounded-circle img-fluid border"></a>
+            <a href="@Url.Action("PhanLoaiHoa", "Shop", new { id = 1 , tieu_chi = "loai_hoa"})"><img src="~/Assets/img/Hoa/HongTuaDoiMoi.jpg"  class="rounded-circle img-fluid border"></a>
             <h5 class="text-center mt-3 mb-3">Hoa Hồng</h5>
             @*<p class="text-center"><a class="btn btn-success">Mua</a></p>*@
         </div>
@@ -129,20 +129,12 @@
                         </a>
                         <div class="card-body">
                             <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
                                 <li class="text-muted text-right">@product.gia.ToString("N0", CultureInfo.GetCultureInfo("vi-VN")) VND</li>
                             </ul>
                             <a href="@Url.Action("ShopSingle", "Shop", new { id = product.id })" class="h2 text-decoration-none text-dark">@product.ten</a>
                             <p class="card-text">
                                 @product.mo_ta
                             </p>
-                            <p class="text-muted">Reviews (24)</p>
                             <a class="btn btn-primary btn-change" href="@Url.Action("ShopSingle", "Shop", new { id = product.id })">Mua ngay</a>
                         </div>
                     </div>
