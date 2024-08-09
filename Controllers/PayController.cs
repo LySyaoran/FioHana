@@ -197,9 +197,6 @@ namespace Do_An.Controllers
             string ExpireDate = DateTime.Now.AddMinutes(30).ToString("yyyyMMddHHmmss");
             vnpay.AddRequestData("vnp_ExpireDate", ExpireDate);
 
-            // vnpay.AddRequestData("vnp_Bill_Email", txt_billing_email.Text.Trim());
-            // vnpay.AddRequestData("vnp_Bill_FirstName", fullName.Substring(0, indexof));
-            // vnpay.AddRequestData("vnp_Bill_Address", txt_inv_addr1.Text.Trim());
 
             // Tạo URL thanh toán
             string paymentUrl = vnpay.CreateRequestUrl(vnp_Url, vnp_HashSecret);
